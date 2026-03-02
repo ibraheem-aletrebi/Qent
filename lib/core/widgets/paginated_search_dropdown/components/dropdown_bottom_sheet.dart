@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quent/core/cubits/theme_cubit/theme_cubit.dart';
-import 'package:quent/core/resources/app_color.dart';
 import 'package:quent/core/services/network/api_local_status_code.dart';
 import 'package:quent/core/widgets/custom_error_widget.dart';
 import 'package:quent/core/widgets/paginated_search_dropdown/components/search_field.dart';
@@ -72,8 +71,8 @@ class _DropdownBottomSheetState<T> extends State<DropdownBottomSheet<T>> {
       height: MediaQuery.of(context).size.height * 0.4,
       decoration: BoxDecoration(
         color: context.watch<ThemeCubit>().isDarkMode
-            ? AppColors.black
-            : AppColors.white,
+            ? Colors.black
+            : Colors.white,
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       child: Column(

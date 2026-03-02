@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quent/core/resources/app_radius.dart';
+import 'package:quent/core/resources/app_sizes.dart';
 
 class NearbyCarCard extends StatelessWidget {
   final String imageUrl;
@@ -12,7 +12,7 @@ class NearbyCarCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(AppRadius.r16),
+        borderRadius: BorderRadius.circular(AppSizes.r16),
         child: AspectRatio(
           aspectRatio: 16 / 12,
           child: Image.network(imageUrl, fit: BoxFit.cover),

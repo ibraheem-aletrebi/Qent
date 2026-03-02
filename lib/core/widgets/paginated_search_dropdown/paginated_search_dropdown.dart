@@ -32,7 +32,7 @@ class PaginatedSearchDropdown<T> extends StatelessWidget {
       builder: (context, state) {
         return CustomTextFormField(
           readOnly: true,
-          hintText:  hintText,
+          hint:  hintText,
           controller: controller,
           validator: validator,
           onTap: () => _openSheet(context),

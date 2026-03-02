@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quent/Features/home/presentation/components/home/brand_item.dart';
-import 'package:quent/core/resources/app_radius.dart';
-import 'package:quent/core/resources/app_size.dart';
+import 'package:quent/core/resources/app_sizes.dart';
 import 'package:quent/core/widgets/section_header.dart';
 
 class HomeSliverBrandingSection extends StatelessWidget {
@@ -14,11 +13,11 @@ class HomeSliverBrandingSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SectionHeader(title: 'Branding', onActionTap: () {}),
-          SizedBox(height: AppSize.s4),
+          SizedBox(height: AppSizes.h4),
           SizedBox(
-            height: AppRadius.r48 * 2 + AppSize.s12,
+            height: AppSizes.r48 * 2 + AppSizes.h12,
             child: ListView.separated(
-              padding: EdgeInsets.symmetric(horizontal: AppSize.s12),
+              padding: EdgeInsets.symmetric(horizontal: AppSizes.w12),
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
               itemCount: 8,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:quent/core/resources/app_color.dart';
-import 'package:quent/core/resources/app_elevation.dart';
-import 'package:quent/core/resources/app_size.dart';
+import 'package:quent/core/extensions/color_extension.dart';
+import 'package:quent/core/resources/app_sizes.dart';
+import 'package:quent/core/resources/app_text_styles.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
@@ -35,28 +35,28 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool isButtonEnabled = enabled && !isLoading;
-
+    final colors = context.myColors;
     return SizedBox(
       width: width ?? double.infinity,
-      height: height ?? AppSize.s50,
+      height: height ?? AppSizes.h50,
       child: ElevatedButton.icon(
         onPressed: isButtonEnabled ? onPressed : null,
         style: ElevatedButton.styleFrom(
-          disabledBackgroundColor: disabledColor ?? AppColors.disabledColor,
-          backgroundColor: backgroundColor ?? Theme.of(context).primaryColor,
+          disabledBackgroundColor:
+              disabledColor ?? colors.primary.withValues(alpha: .5),
+          backgroundColor: backgroundColor ?? colors.primary,
           shape: RoundedRectangleBorder(
             side: BorderSide(
               color: borderColor ?? Colors.transparent,
               width: 2,
             ),
-            borderRadius: BorderRadius.circular(borderRadius ?? AppSize.s8),
+            borderRadius: BorderRadius.circular(borderRadius ?? AppSizes.r8),
           ),
-          elevation: AppElevation.e0,
         ),
         icon: isLoading
             ? SizedBox(
-                height: AppSize.s18,
-                width: AppSize.s18,
+                height: AppSizes.w18,
+                width: AppSizes.w18,
                 child: CircularProgressIndicator(
                   strokeWidth: 2.5,
                   valueColor: AlwaysStoppedAnimation<Color>(
@@ -69,9 +69,8 @@ class CustomButton extends StatelessWidget {
             : null,
         label: Text(
           text,
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+          style: AppTextStyles.semiBold15Button.copyWith(
             color: textColor ?? Colors.white,
-            fontWeight: FontWeight.w600,
           ),
         ),
       ),

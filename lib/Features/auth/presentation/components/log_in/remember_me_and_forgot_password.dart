@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quent/Features/auth/presentation/cubits/login/login_cubit.dart';
 import 'package:quent/Features/auth/presentation/views/forgot_password_view.dart';
-import 'package:quent/core/cubits/theme_cubit/theme_cubit.dart';
-import 'package:quent/core/resources/app_color.dart';
+import 'package:quent/core/extensions/color_extension.dart';
 import 'package:quent/generated/l10n.dart';
 
 class RememberMeAndForgotPassword extends StatelessWidget {
@@ -36,9 +35,7 @@ class RememberMeAndForgotPassword extends StatelessWidget {
                   Text(
                     S.of(context).rememberMe,
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      color: context.watch<ThemeCubit>().isDarkMode
-                          ? AppColors.secondaryLightTextColor
-                          : AppColors.secondaryDarkTextColor,
+                      color: context.myColors.textSecondary,
                     ),
                   ),
                 ],

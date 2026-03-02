@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quent/core/cubits/theme_cubit/theme_cubit.dart';
-import 'package:quent/core/resources/app_color.dart';
+import 'package:quent/core/extensions/color_extension.dart';
 
 class BestCarCard extends StatelessWidget {
   final String imageUrl;
@@ -29,19 +27,15 @@ class BestCarCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDarkMode = context.watch<ThemeCubit>().isDarkMode;
     final theme = Theme.of(context);
-
+    final colors = context.myColors;
     return GestureDetector(
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
+          color: colors.surface,
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(
-            color: isDarkMode
-                ? AppColors.surfaceDarkColor
-                : AppColors.surfaceLightColor,
-          ),
+          border: Border.all(color: colors.surface),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,14 +57,14 @@ class BestCarCard extends StatelessWidget {
                   right: 10,
                   child: IconButton(
                     style: IconButton.styleFrom(
-                      backgroundColor: isDarkMode
-                          ? AppColors.surfaceDarkColor
-                          : AppColors.surfaceLightColor,
+                      backgroundColor: colors.surface,
                     ),
                     onPressed: onFavoriteTap,
                     icon: Icon(
                       isFavorite ? Icons.favorite : Icons.favorite_border,
-                      color: isFavorite ? Colors.red : AppColors.black,
+                      color: isFavorite
+                          ? colors.primary
+                          : colors.primaryVariant,
                     ),
                   ),
                 ),
@@ -95,7 +89,7 @@ class BestCarCard extends StatelessWidget {
                       const SizedBox(width: 4),
                       Text(
                         rating.toString(),
-                        style: theme.textTheme.titleMedium,
+                        style: theme.textTheme.titleSmall,
                       ),
                     ],
                   ),
@@ -107,7 +101,7 @@ class BestCarCard extends StatelessWidget {
                       Expanded(
                         child: Text(
                           location,
-                          style: theme.textTheme.titleSmall?.copyWith(),
+                          style: theme.textTheme.bodyMedium,
                           overflow: TextOverflow.ellipsis,
                           maxLines: 1,
                         ),
@@ -124,7 +118,7 @@ class BestCarCard extends StatelessWidget {
                           const SizedBox(width: 4),
                           Text(
                             '$seats Seats',
-                            style: theme.textTheme.titleSmall,
+                            style: theme.textTheme.bodyMedium,
                           ),
                         ],
                       ),

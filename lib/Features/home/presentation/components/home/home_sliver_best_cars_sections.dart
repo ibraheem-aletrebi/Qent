@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quent/core/resources/app_size.dart';
 import 'package:quent/Features/home/presentation/components/home/best_car_card.dart';
+import 'package:quent/core/resources/app_sizes.dart';
 import 'package:quent/core/widgets/section_header.dart';
 
 class HomeSliverBestCarsSections extends StatelessWidget {
@@ -14,11 +14,11 @@ class HomeSliverBestCarsSections extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SectionHeader(title: 'Best Cars', onActionTap: () {}),
-          SizedBox(height: AppSize.s4),
+          SizedBox(height: AppSizes.h4),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.4,
             child: ListView.separated(
-              padding: EdgeInsets.symmetric(horizontal: AppSize.s12),
+              padding: EdgeInsets.symmetric(horizontal: AppSizes.w12),
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
               itemCount: 8,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:quent/core/resources/app_color.dart';
 import 'package:quent/generated/l10n.dart';
 
 class YesNoOption extends StatefulWidget {
@@ -83,7 +82,7 @@ class _YesNoOptionState extends State<YesNoOption> {
           decoration: BoxDecoration(
             color: selected
                 ? color.withValues(alpha: .1)
-                : AppColors.transparent,
+                : Colors.transparent,
             border: Border.all(
               color: selected ? color : Colors.grey[300]!,
               width: 2,

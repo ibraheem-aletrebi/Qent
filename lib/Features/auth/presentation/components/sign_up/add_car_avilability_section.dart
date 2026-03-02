@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:quent/Features/auth/presentation/components/sign_up/custom_date_time_field.dart';
 import 'package:quent/Features/auth/presentation/components/sign_up/yes_no_option.dart';
 import 'package:quent/Features/auth/presentation/cubits/signup/signup_cubit.dart';
-import 'package:quent/core/resources/app_size.dart';
+import 'package:quent/core/resources/app_sizes.dart';
 import 'package:quent/core/utils/form_validators.dart';
 import 'package:quent/core/widgets/custom_text_form_field.dart';
 import 'package:quent/generated/l10n.dart';
@@ -29,9 +29,9 @@ class AddCarAvilabilitySection extends StatelessWidget {
               visible: context.watch<SignupCubit>().addCar,
               child: Column(
                 children: [
-                  SizedBox(height: AppSize.s16),
+                  SizedBox(height: AppSizes.h16),
                   CustomTextFormField(
-                    hintText: S.of(context).nationalId,
+                    hint: S.of(context).nationalId,
                     controller: context
                         .read<SignupCubit>()
                         .nationalIdController,
@@ -41,7 +41,7 @@ class AddCarAvilabilitySection extends StatelessWidget {
                       S.of(context).nationalIdValidation,
                     ),
                   ),
-                  SizedBox(height: AppSize.s16),
+                  SizedBox(height: AppSizes.h16),
                   CustomDatePickerField(
                     validator: (value) => FormValidators.birthDate(
                       value,

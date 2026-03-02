@@ -5,7 +5,7 @@ import 'package:quent/Features/auth/presentation/cubits/signup/signup_cubit.dart
 import 'package:quent/core/di/services_locator.dart';
 import 'package:quent/core/models/country_model.dart';
 import 'package:quent/core/models/location_model.dart';
-import 'package:quent/core/resources/app_size.dart';
+import 'package:quent/core/resources/app_sizes.dart';
 import 'package:quent/core/utils/country_code_to_flag.dart';
 import 'package:quent/core/utils/form_validators.dart';
 import 'package:quent/core/widgets/paginated_search_dropdown/cubit/paginated_dropdown_cubit.dart';
@@ -46,7 +46,7 @@ class _CountryLocationSelectorState extends State<CountryLocationSelector> {
   Widget build(BuildContext context) {
     final cubit = context.read<SignupCubit>();
     return Row(
-      spacing: AppSize.s16,
+      spacing: AppSizes.h16,
       children: [
         Expanded(
           child: PaginatedSearchDropdown<CountryModel>(

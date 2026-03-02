@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quent/core/resources/app_size.dart';
+import 'package:quent/core/resources/app_sizes.dart';
 import 'package:quent/core/widgets/custom_button.dart';
 import 'package:quent/generated/l10n.dart';
 import 'package:quent/Features/auth/presentation/cubits/forgot_password_flow/forgot_password_flow_cubit.dart';
@@ -24,7 +24,7 @@ class ResetPasswordRequestActions extends StatelessWidget {
             );
           },
         ),
-        SizedBox(height: AppSize.s32),
+        SizedBox(height: AppSizes.h32),
         TextButton(
           onPressed: () => Navigator.of(context).pop(),
           child: Text(S.of(context).backToLogin),

@@ -6,7 +6,7 @@ import 'package:quent/core/cubits/language_cubit/language_cubit.dart';
 import 'package:quent/core/cubits/language_cubit/language_state.dart';
 import 'package:quent/core/cubits/theme_cubit/theme_cubit.dart';
 import 'package:quent/core/cubits/theme_cubit/theme_state.dart';
-import 'package:quent/core/resources/app_theme.dart';
+import 'package:quent/core/resources/theme.dart';
 import 'package:quent/core/routing/route_configration.dart';
 import 'package:quent/generated/l10n.dart';
 
@@ -38,8 +38,8 @@ class QentApp extends StatelessWidget {
                   supportedLocales: S.delegate.supportedLocales,
                   locale: Locale(state.languageCode),
                   debugShowCheckedModeBanner: false,
-                  theme: buildLightTheme(Locale(state.languageCode)),
-                  darkTheme: buildDarkTheme(Locale(state.languageCode)),
+                  theme: AppTheme.lightTheme,
+                  darkTheme: AppTheme.darkTheme,
                   themeMode: context.read<ThemeCubit>().isDarkMode
                       ? ThemeMode.dark
                       : ThemeMode.light,

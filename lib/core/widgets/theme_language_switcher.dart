@@ -3,7 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quent/core/animation/rotate_animation.dart';
 import 'package:quent/core/animation/slide_in_widget.dart';
 import 'package:quent/core/cubits/theme_cubit/theme_cubit.dart';
-import 'package:quent/core/resources/app_color.dart';
+import 'package:quent/core/extensions/color_extension.dart';
+import 'package:quent/core/resources/app_sizes.dart';
 import 'package:quent/core/widgets/language_dropdown_menu.dart';
 
 class ThemeLanguageSwitcher extends StatelessWidget {
@@ -20,15 +21,13 @@ class ThemeLanguageSwitcher extends StatelessWidget {
           RotateAnimation(
             child: IconButton(
               style: IconButton.styleFrom(
-                backgroundColor: isDarkMode
-                    ? AppColors.surfaceDarkColor
-                    : AppColors.surfaceLightColor,
+                backgroundColor: context.myColors.surface,
               ),
               key: ValueKey(isDarkMode),
               onPressed: () => context.read<ThemeCubit>().toggleTheme(),
               icon: Icon(
                 isDarkMode ? Icons.light : Icons.light_outlined,
-                size: 28,
+                size: AppSizes.sp28,
               ),
             ),
           ),

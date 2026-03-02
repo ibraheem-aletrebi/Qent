@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quent/Features/auth/presentation/components/forgot_password/forgot_password_flow_bloc_listener.dart';
 import 'package:quent/Features/auth/presentation/cubits/forgot_password_flow/forgot_password_flow_cubit.dart';
 import 'package:quent/core/di/services_locator.dart';
-import 'package:quent/core/resources/app_padding.dart';
+import 'package:quent/core/resources/app_sizes.dart';
 
 class ForgotPasswordView extends StatelessWidget {
   const ForgotPasswordView({super.key});
@@ -16,7 +16,7 @@ class ForgotPasswordView extends StatelessWidget {
         resizeToAvoidBottomInset: true,
         body: SafeArea(
           child: Padding(
-            padding: EdgeInsets.all(AppPadding.p16),
+            padding: EdgeInsets.all(AppSizes.w16),
             child: ForgotPasswordFlowBlocListener(),
           ),
         ),

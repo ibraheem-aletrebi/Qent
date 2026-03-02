@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quent/core/resources/app_size.dart';
+import 'package:quent/core/resources/app_sizes.dart';
 
 class AuthTitleBody extends StatelessWidget {
   const AuthTitleBody({super.key, required this.title, required this.body});
@@ -11,13 +11,13 @@ class AuthTitleBody extends StatelessWidget {
       children: [
         Text(
           title,
-          style: TextTheme.of(context).titleMedium,
+          style: TextTheme.of(context).headlineLarge,
           textAlign: TextAlign.center,
         ),
-        SizedBox(height: AppSize.s16),
+        SizedBox(height: AppSizes.h16),
         Text(
           body,
-          style: TextTheme.of(context).displaySmall,
+          style: TextTheme.of(context).bodyMedium,
           textAlign: TextAlign.center,
         ),
       ],

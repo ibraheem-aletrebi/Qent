@@ -3,8 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quent/core/cubits/language_cubit/language_cubit.dart';
 import 'package:quent/core/cubits/language_cubit/language_state.dart';
 import 'package:quent/core/cubits/theme_cubit/theme_cubit.dart';
-import 'package:quent/core/resources/app_border.dart';
-import 'package:quent/core/resources/app_elevation.dart';
+import 'package:quent/core/resources/app_sizes.dart';
 import 'package:quent/generated/l10n.dart';
 
 class LanguageDropdownMenu extends StatelessWidget {
@@ -17,7 +16,6 @@ class LanguageDropdownMenu extends StatelessWidget {
         final currentLang = state.languageCode;
         return DropdownButton<String>(
           barrierDismissible: true,
-          elevation: AppElevation.e4.toInt(),
           style: TextTheme.of(context).titleLarge,
           icon: Icon(
             Icons.arrow_drop_down_outlined,
@@ -25,7 +23,7 @@ class LanguageDropdownMenu extends StatelessWidget {
                 ? Colors.white
                 : Colors.black,
           ),
-          borderRadius: BorderRadius.circular(AppBorder.b8),
+          borderRadius: BorderRadius.circular(AppSizes.r8),
           value: currentLang,
           underline: const SizedBox(),
           onChanged: (String? newValue) {

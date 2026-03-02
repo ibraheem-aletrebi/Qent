@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quent/core/resources/app_size.dart';
 import 'package:quent/Features/home/presentation/components/home/nearby_car_card.dart';
+import 'package:quent/core/resources/app_sizes.dart';
 import 'package:quent/core/widgets/section_header.dart';
 
 class HomeSliverNearbyCarsSections extends StatelessWidget {
@@ -13,15 +13,15 @@ class HomeSliverNearbyCarsSections extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SectionHeader(title: 'Nearby Cars', onActionTap: () {}),
-          SizedBox(height: AppSize.s4),
+          SizedBox(height: AppSizes.h4),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.2,
             child: ListView.separated(
-              padding: EdgeInsets.symmetric(horizontal: AppSize.s12),
+              padding: EdgeInsets.symmetric(horizontal: AppSizes.w12),
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
               itemCount: 8,
-              separatorBuilder: (_, __) => const SizedBox(width: 12),
+              separatorBuilder: (_, _) => const SizedBox(width: 12),
               itemBuilder: (context, index) {
                 return SizedBox(
                   width: screenWidth * 0.7,

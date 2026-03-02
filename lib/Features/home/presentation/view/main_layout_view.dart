@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quent/Features/home/presentation/components/layout/custom_bottom_navigation_bar.dart';
 import 'package:quent/Features/home/presentation/cubits/layout/layout_cubit.dart';
-import 'package:quent/core/resources/app_margin.dart';
+import 'package:quent/core/resources/app_sizes.dart';
 
 class MainLayoutView extends StatelessWidget {
   const MainLayoutView({super.key});
@@ -22,8 +22,8 @@ class MainLayoutView extends StatelessWidget {
               ),
             ),
             Positioned(
-              left: AppMargin.m16,
-              right: AppMargin.m16,
+              left: AppSizes.w16,
+              right: AppSizes.w16,
               bottom: 0,
               child: CustomBottomNavigationBar(),
             ),

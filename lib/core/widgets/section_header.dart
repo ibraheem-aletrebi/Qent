@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quent/core/resources/app_color.dart';
-import 'package:quent/core/resources/app_padding.dart';
+import 'package:quent/core/extensions/color_extension.dart';
+import 'package:quent/core/resources/app_sizes.dart';
 
 class SectionHeader extends StatelessWidget {
   final String title;
@@ -19,13 +19,11 @@ class SectionHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final colors = context.myColors;
     return Padding(
       padding:
           padding ??
-          EdgeInsets.symmetric(
-            horizontal: AppPadding.p16,
-            vertical: AppPadding.p4,
-          ),
+          EdgeInsets.symmetric(horizontal: AppSizes.w16, vertical: AppSizes.h4),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -34,18 +32,12 @@ class SectionHeader extends StatelessWidget {
             TextButton(
               onPressed: onActionTap,
               style: TextButton.styleFrom(
-                foregroundColor: AppColors.secondaryColor,
+                foregroundColor: colors.secondary,
                 padding: EdgeInsets.zero,
                 minimumSize: const Size(48, 36),
                 tapTargetSize: MaterialTapTargetSize.shrinkWrap,
               ),
-              child: Text(
-                actionText,
-                style: TextStyle(
-                  decoration: TextDecoration.underline,
-                  decorationThickness: 2,
-                ),
-              ),
+              child: Text(actionText, style: TextTheme.of(context).bodyMedium),
             ),
         ],
       ),

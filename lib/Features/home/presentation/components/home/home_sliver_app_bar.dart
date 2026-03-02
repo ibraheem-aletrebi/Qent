@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quent/core/resources/app_color.dart';
-import 'package:quent/core/resources/app_padding.dart';
-import 'package:quent/core/resources/app_radius.dart';
-import 'package:quent/core/resources/app_size.dart';
+import 'package:quent/core/extensions/color_extension.dart';
+import 'package:quent/core/resources/app_sizes.dart';
 import 'package:quent/core/widgets/custom_logo.dart';
 
 class HomeSliverAppBar extends StatelessWidget {
@@ -11,74 +9,76 @@ class HomeSliverAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      pinned: false,
-      floating: false,
-      surfaceTintColor: AppColors.transparent,
-      expandedHeight: AppSize.s65,
+      floating: true,
+      backgroundColor: context.myColors.background,
+      surfaceTintColor: Colors.transparent, // مهم جداً: منع تغير اللون
+      elevation: 0, // منع الظل
+      scrolledUnderElevation: 0, // منع تغير اللون تحت الـ scroll
       bottom: PreferredSize(
         preferredSize: const Size.fromHeight(1),
-        child: const Divider(),
+        child: Divider(height: 1, thickness: 1),
       ),
-      leading: const SizedBox(),
-      flexibleSpace: FlexibleSpaceBar(
-        collapseMode: CollapseMode.parallax,
-        centerTitle: false,
-        titlePadding: EdgeInsets.symmetric(
-          horizontal: AppPadding.p16,
-          vertical: AppPadding.p8,
-        ),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      leading: const SizedBox.shrink(),
+      centerTitle: false,
+      toolbarHeight: AppSizes.h80,
+      title: CustomLogo(size: AppSizes.w80),
+      actionsPadding: EdgeInsets.only(right: AppSizes.w16, left: AppSizes.w8),
+      actions: [
+        Stack(
+          clipBehavior: Clip.none,
           children: [
-            const CustomLogo(),
-            Row(
-              spacing: 8,
-              children: [
-                Stack(
-                  clipBehavior: Clip.none,
-                  children: [
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.notifications_none_rounded),
-                    ),
-                    Positioned(
-                      top: 0,
-                      right: 0,
-                      child: Container(
-                        padding: const EdgeInsets.all(4),
-                        constraints: const BoxConstraints(
-                          minWidth: 16,
-                          minHeight: 16,
-                        ),
-                        decoration: BoxDecoration(
-                          color: AppColors.primaryColor,
-                          shape: BoxShape.circle,
-                        ),
-                        child: Text(
-                          '3',
-                          style: TextTheme.of(
-                            context,
-                          ).titleSmall?.copyWith(fontSize: AppSize.s10),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ),
-                  ],
+            IconButton.filled(
+              style: IconButton.styleFrom(
+                backgroundColor: context.myColors.primarySoft,
+                minimumSize: Size(AppSizes.w45, AppSizes.w45),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(AppSizes.r12),
                 ),
-                GestureDetector(
-                  onTap: () {},
-                  child: CircleAvatar(
-                    radius: AppRadius.r18,
-                    backgroundImage: const NetworkImage(
-                      "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde",
-                    ),
-                  ),
+              ),
+              onPressed: () {},
+              icon: Icon(Icons.notifications_none_rounded, size: AppSizes.w24),
+            ),
+            Positioned(
+              top: -AppSizes.h6,
+              right: -AppSizes.w4,
+              child: Container(
+                padding: EdgeInsets.all(AppSizes.w4),
+                constraints: BoxConstraints(
+                  minWidth: AppSizes.w20,
+                  minHeight: AppSizes.h20,
                 ),
-              ],
+                decoration: BoxDecoration(
+                  color: context.myColors.primary,
+                  shape: BoxShape.circle,
+                ),
+                child: Text(
+                  '3',
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyMedium?.copyWith(color: Colors.white),
+                  textAlign: TextAlign.center,
+                ),
+              ),
             ),
           ],
         ),
-      ),
+        SizedBox(width: AppSizes.w12),
+        Container(
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(
+              color: context.myColors.primary,
+              width: AppSizes.w2,
+            ),
+          ),
+          child: CircleAvatar(
+            radius: AppSizes.r24,
+            backgroundImage: const NetworkImage(
+              "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde",
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

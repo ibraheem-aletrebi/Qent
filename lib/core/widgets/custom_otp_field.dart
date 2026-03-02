@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
-import 'package:quent/core/resources/app_border.dart';
-import 'package:quent/core/resources/app_size.dart';
+import 'package:quent/core/resources/app_sizes.dart';
+
 
 class CustomOTPField extends StatelessWidget {
   final int length;
@@ -47,12 +47,12 @@ class CustomOTPField extends StatelessWidget {
     final colorScheme = theme.colorScheme;
 
     final defaultPinTheme = PinTheme(
-      width: width ?? AppSize.s48,
-      height: height ?? AppSize.s48,
+      width: width ?? AppSizes.w48,
+      height: height ??  AppSizes.w48,
       textStyle: theme.textTheme.titleLarge,
       decoration: BoxDecoration(
         color: backgroundColor ?? colorScheme.surface,
-        borderRadius: BorderRadius.circular(borderRadius ?? AppBorder.b12),
+        borderRadius: BorderRadius.circular(borderRadius ?? AppSizes.r12),
         border: Border.all(color: borderColor ?? colorScheme.outline, width: 2),
       ),
     );
@@ -102,7 +102,7 @@ class CustomOTPField extends StatelessWidget {
         children: [
           Container(
             margin: const EdgeInsets.only(bottom: 8),
-            width: AppSize.s22,
+            width: AppSizes.w24,
             height: 2,
             color: cursorColor ?? colorScheme.primary,
           ),

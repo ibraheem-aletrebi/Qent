@@ -4,10 +4,10 @@ import 'package:quent/Features/auth/presentation/components/sign_up/add_car_avil
 import 'package:quent/Features/auth/presentation/components/sign_up/country_location_selector.dart';
 import 'package:quent/Features/auth/presentation/components/sign_up/signup_name_fields.dart';
 import 'package:quent/Features/auth/presentation/components/sign_up/signup_password_fields.dart';
+import 'package:quent/core/resources/app_sizes.dart';
 import 'package:quent/core/utils/form_validators.dart';
 import 'package:quent/core/widgets/custom_text_form_field.dart';
 import 'package:quent/generated/l10n.dart';
-import 'package:quent/core/resources/app_size.dart';
 import 'package:quent/Features/auth/presentation/cubits/signup/signup_cubit.dart';
 
 class SignupForm extends StatelessWidget {
@@ -21,9 +21,9 @@ class SignupForm extends StatelessWidget {
       child: Column(
         children: [
          SignupNameFields(),
-          SizedBox(height: AppSize.s16),
+          SizedBox(height: AppSizes.h16),
           CustomTextFormField(
-            hintText: S.of(context).email,
+            hint: S.of(context).email,
             controller: cubit.emailController,
             validator: (value) => FormValidators.email(
               value,
@@ -31,9 +31,9 @@ class SignupForm extends StatelessWidget {
               S.of(context).invalidEmail,
             ),
           ),
-          SizedBox(height: AppSize.s16),
+          SizedBox(height: AppSizes.h16),
           CustomTextFormField(
-            hintText: S.of(context).PhoneNumber,
+            hint: S.of(context).PhoneNumber,
             controller: cubit.phoneController,
             validator: (value) => FormValidators.phone(
               value,
@@ -41,11 +41,11 @@ class SignupForm extends StatelessWidget {
               S.of(context).phoneNumberValidation,
             ),
           ),
-          SizedBox(height: AppSize.s16),
+          SizedBox(height: AppSizes.h16),
           CountryLocationSelector(),
-          SizedBox(height: AppSize.s16),
+          SizedBox(height: AppSizes.h16),
           SignupPasswordFields(),
-          SizedBox(height: AppSize.s16),
+          SizedBox(height: AppSizes.h16),
           AddCarAvilabilitySection(),
         ],
       ),

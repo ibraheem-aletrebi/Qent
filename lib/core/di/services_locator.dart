@@ -27,8 +27,8 @@ Future<void> _initAuth() async {
   sl
     ..registerFactory(() => LoginCubit(repo: sl()))
     ..registerFactory(() => SignupCubit(repo: sl()))
-    ..registerFactory(() =>  PhoneVerifyCubit(repo: sl()))
-    ..registerFactory(()=> ForgotPasswordFlowCubit(repo: sl()))
+    ..registerFactory(() => PhoneVerifyCubit(repo: sl()))
+    ..registerFactory(() => ForgotPasswordFlowCubit(repo: sl()))
     ..registerLazySingleton(() => LoginRepo(authDataSource: sl()))
     ..registerLazySingleton(() => AuthDataSource(apiService: sl()))
     ..registerLazySingleton(() => SignupRepo(authDataSource: sl()));

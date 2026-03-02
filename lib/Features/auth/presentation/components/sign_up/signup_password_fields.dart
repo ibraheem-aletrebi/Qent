@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quent/Features/auth/presentation/cubits/signup/signup_cubit.dart';
-import 'package:quent/core/resources/app_size.dart';
+import 'package:quent/core/resources/app_sizes.dart';
 import 'package:quent/core/utils/form_validators.dart';
 import 'package:quent/core/widgets/custom_text_form_field.dart';
 import 'package:quent/generated/l10n.dart';
@@ -13,12 +13,12 @@ class SignupPasswordFields extends StatelessWidget {
   Widget build(BuildContext context) {
     final cubit = context.read<SignupCubit>();
     return Row(
-      spacing: AppSize.s16,
+      spacing: AppSizes.h16,
       children: [
         Expanded(
           child: CustomTextFormField(
             controller: cubit.passwordController,
-            hintText: S.of(context).password,
+            hint: S.of(context).password,
             isPassword: true,
             validator: (value) => FormValidators.password(
               value,
@@ -35,7 +35,7 @@ class SignupPasswordFields extends StatelessWidget {
               value,
               S.of(context).passwordDoNotMatch,
             ),
-            hintText: S.of(context).ConfirmPassword,
+            hint: S.of(context).ConfirmPassword,
             isPassword: true,
           ),
         ),

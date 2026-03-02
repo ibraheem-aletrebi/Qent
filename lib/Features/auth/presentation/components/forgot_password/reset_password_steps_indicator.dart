@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quent/core/cubits/language_cubit/language_cubit.dart';
-import 'package:quent/core/cubits/theme_cubit/theme_cubit.dart';
-import 'package:quent/core/resources/app_color.dart';
-import 'package:quent/core/resources/app_radius.dart';
-import 'package:quent/core/resources/app_size.dart';
+import 'package:quent/core/extensions/color_extension.dart';
+import 'package:quent/core/resources/app_sizes.dart';
 import 'package:quent/core/utils/convert_to_arabic_number.dart';
 
 class ResetPasswordStepsIndicator extends StatelessWidget {
@@ -19,8 +17,8 @@ class ResetPasswordStepsIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDarkMode = context.watch<ThemeCubit>().isDarkMode;
     final isArabic = context.watch<LanguageCubit>().isArabic();
+    final colors = context.myColors;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: List.generate(numberOfSteps * 2 - 1, (i) {
@@ -31,20 +29,18 @@ class ResetPasswordStepsIndicator extends StatelessWidget {
 
           return AnimatedContainer(
             duration: const Duration(milliseconds: 350),
-            width: AppSize.s32,
-            height: AppSize.s32,
+            width: AppSizes.w32,
+            height: AppSizes.w32,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: isActive
-                  ? AppColors.primaryColor
-                  : isDarkMode
-                  ? AppColors.surfaceDarkColor
-                  : AppColors.surfaceLightColor,
+                  ? colors.primary
+                  : colors.surface,
 
               boxShadow: isActive
                   ? [
                       BoxShadow(
-                        color: AppColors.primaryColor.withValues(alpha: 0.85),
+                        color: colors.primary.withValues(alpha: 0.85),
                         blurRadius: 15,
                         spreadRadius: 1,
                       ),
@@ -67,7 +63,7 @@ class ResetPasswordStepsIndicator extends StatelessWidget {
                   ? const Icon(
                       Icons.check,
                       key: ValueKey('check_icon'),
-                      color: AppColors.white,
+                      color: Colors.white,
                     )
                   : Text(
                       isArabic
@@ -77,10 +73,8 @@ class ResetPasswordStepsIndicator extends StatelessWidget {
                       style: Theme.of(context).textTheme.displaySmall?.copyWith(
                         fontWeight: FontWeight.bold,
                         color: isActive
-                            ? AppColors.white
-                            : isDarkMode
-                            ? AppColors.primaryDarkTextColor
-                            : AppColors.primaryLightTextColor,
+                            ? Colors.white
+                            : colors.textPrimary,
                       ),
                     ),
             ),
@@ -90,11 +84,11 @@ class ResetPasswordStepsIndicator extends StatelessWidget {
           bool isActive = currentStep > prevStepIndex;
           return AnimatedContainer(
             duration: const Duration(milliseconds: 350),
-            width: AppSize.s60,
+            width: AppSizes.w60,
             height: 4,
             margin: const EdgeInsets.symmetric(horizontal: 6),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(AppRadius.r12),
+              borderRadius: BorderRadius.circular(AppSizes.r12),
               gradient: isActive
                   ? LinearGradient(
                       colors: [
@@ -104,9 +98,7 @@ class ResetPasswordStepsIndicator extends StatelessWidget {
                     )
                   : null,
               color: !isActive
-                  ? (isDarkMode
-                        ? AppColors.surfaceDarkColor
-                        : AppColors.surfaceLightColor)
+                  ?colors.surface
                   : null,
             ),
           );

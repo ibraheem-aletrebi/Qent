@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:quent/core/resources/app_size.dart';
+import 'package:quent/core/extensions/color_extension.dart';
+import 'package:quent/core/resources/app_sizes.dart';
+import 'package:quent/core/resources/app_text_styles.dart';
 
 class AuthActionPrompt extends StatelessWidget {
   final String leadingText;
@@ -19,15 +21,12 @@ class AuthActionPrompt extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final defaultLeadingStyle =
-        leadingStyle ?? Theme.of(context).textTheme.displaySmall;
+    final defaultLeadingStyle = leadingStyle ?? AppTextStyles.regular14;
     final defaultActionStyle =
         actionStyle ??
-        Theme.of(context).textTheme.displaySmall?.copyWith(
-          color: Theme.of(context).primaryColor,
-        );
+        AppTextStyles.semiBold14.copyWith(color: context.myColors.primary);
     return SizedBox(
-      height: AppSize.s65,
+      height: AppSizes.h65,
       child: Center(
         child: GestureDetector(
           onTap: onActionTap,
@@ -35,7 +34,7 @@ class AuthActionPrompt extends StatelessWidget {
             TextSpan(
               children: [
                 TextSpan(text: leadingText, style: defaultLeadingStyle),
-                WidgetSpan(child: SizedBox(width: AppSize.s8)),
+                WidgetSpan(child: SizedBox(width: AppSizes.w8)),
                 TextSpan(text: actionText, style: defaultActionStyle),
               ],
             ),

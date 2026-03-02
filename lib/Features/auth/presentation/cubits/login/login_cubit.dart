@@ -23,7 +23,6 @@ class LoginCubit extends Cubit<LoginState> {
 
   void login() async {
     if (!formKey.currentState!.validate()) return;
-
     emit(LoginLoading());
 
     final result = await repo.login(
@@ -35,7 +34,10 @@ class LoginCubit extends Cubit<LoginState> {
 
     result.when(
       onSuccess: (data) async {
-        LocalSecureStorageHelper().saveTokens(access: data.tokens.access, refresh: data.tokens.refresh);
+        LocalSecureStorageHelper().saveTokens(
+          access: data.tokens.access,
+          refresh: data.tokens.refresh,
+        );
         if (rememberMe) {
           await LocalStorageHelper().setValue(HiveKeys.rememberMe, true);
         } else {

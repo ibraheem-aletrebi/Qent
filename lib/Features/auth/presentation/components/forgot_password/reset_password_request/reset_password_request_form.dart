@@ -13,7 +13,7 @@ class ResetPasswordRequestForm extends StatelessWidget {
       key: context.read<ForgotPasswordFlowCubit>().resetPasswordRequestFormKey,
       child: CustomTextFormField(
         controller: context.watch<ForgotPasswordFlowCubit>().emailController,
-        hintText: S.of(context).email,
+        hint: S.of(context).email,
         validator: (value) => FormValidators.email(
           value,
           S.of(context).emailRequired,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quent/core/resources/app_radius.dart';
-import 'package:quent/core/resources/app_size.dart';
+import 'package:quent/core/extensions/color_extension.dart';
+import 'package:quent/core/resources/app_sizes.dart';
 
 class BrandItem extends StatelessWidget {
   final String imageUrl;
@@ -15,8 +15,8 @@ class BrandItem extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            height: AppRadius.r40 * 2,
-            width: AppRadius.r40 * 2,
+            height: AppSizes.r40 * 2,
+            width: AppSizes.r40 * 2,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(
@@ -25,10 +25,12 @@ class BrandItem extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: AppSize.s4),
+          SizedBox(height: AppSizes.h4),
           Text(
             'Brand name',
-            style: Theme.of(context).textTheme.titleSmall,
+            style: Theme.of(context).textTheme.titleSmall?.copyWith(
+              color: context.myColors.textPrimary,
+            ),
             overflow: TextOverflow.ellipsis,
             maxLines: 1,
           ),

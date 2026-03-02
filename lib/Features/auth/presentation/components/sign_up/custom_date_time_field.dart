@@ -70,8 +70,8 @@ class _CustomDatePickerFieldState extends State<CustomDatePickerField> {
             CustomTextFormField(
               controller: _controller,
               readOnly: true,
-              hintText: widget.hintText,
-              suffixIcon: const Icon(Icons.calendar_month_rounded),
+              hint: widget.hintText,
+              suffix: const Icon(Icons.calendar_month_rounded),
               validator: widget.validator,
               onTap: () => _pickDate(field),
             ),
