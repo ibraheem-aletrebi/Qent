@@ -56,7 +56,6 @@ class ForgotPasswordFlowCubit extends Cubit<ForgotPasswordFlowState> {
     );
     result.when(
       onSuccess: (data) {
-        otpController.text = data.code;
         otp = data.code;
         LocalSecureStorageHelper().write(
           key: SecureStorageKeys.resetToken,
@@ -91,7 +90,6 @@ class ForgotPasswordFlowCubit extends Cubit<ForgotPasswordFlowState> {
     );
     result.when(
       onSuccess: (data) {
-        otpController.text = data.code;
         LocalSecureStorageHelper().write(
           key: SecureStorageKeys.resetToken,
           value: data.resetToken,

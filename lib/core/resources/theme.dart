@@ -4,9 +4,8 @@ import 'package:quent/core/resources/app_color.dart';
 import 'package:quent/core/resources/app_sizes.dart';
 import 'package:quent/core/resources/app_text_styles.dart';
 
-
 class AppTheme {
-  static const String _fontFamily = 'Alexandria';
+  static const String _fontFamily = 'Nunito';
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
@@ -274,6 +273,25 @@ class AppTheme {
         }
         return AppColors.light.border;
       }),
+    ),
+
+    checkboxTheme: CheckboxThemeData(
+      fillColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) {
+          return AppColors.light.primary;
+        }
+        return AppColors.light.border;
+      }),
+      checkColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) {
+          return AppColors.light.textOnPrimary;
+        }
+        return Colors.transparent;
+      }),
+      side: BorderSide(color: AppColors.light.border),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppSizes.r4),
+      ),
     ),
 
     snackBarTheme: SnackBarThemeData(
@@ -579,6 +597,26 @@ class AppTheme {
         }
         return AppColors.dark.border;
       }),
+    ),
+
+    checkboxTheme: CheckboxThemeData(
+      fillColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) {
+          return AppColors.dark.primary;
+        }
+        return AppColors.dark.border;
+      }),
+      checkColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) {
+          return AppColors.dark.textOnPrimary;
+        }
+        return Colors.transparent;
+      }),
+      side: BorderSide(color: AppColors.dark.border),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppSizes.r4),
+      ),
+      
     ),
 
     snackBarTheme: SnackBarThemeData(

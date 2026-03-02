@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quent/core/cubits/language_cubit/language_cubit.dart';
 import 'package:quent/core/extensions/color_extension.dart';
 import 'package:quent/core/resources/app_sizes.dart';
+import 'package:quent/core/resources/font_weight_helper.dart';
 import 'package:quent/core/utils/convert_to_arabic_number.dart';
 
 class ResetPasswordStepsIndicator extends StatelessWidget {
@@ -33,9 +34,7 @@ class ResetPasswordStepsIndicator extends StatelessWidget {
             height: AppSizes.w32,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: isActive
-                  ? colors.primary
-                  : colors.surface,
+              color: isActive ? colors.primary : colors.surface,
 
               boxShadow: isActive
                   ? [
@@ -70,11 +69,9 @@ class ResetPasswordStepsIndicator extends StatelessWidget {
                           ? convertToArabicNumber(stepIndex + 1)
                           : '${stepIndex + 1}',
                       key: ValueKey('step_$stepIndex'),
-                      style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: isActive
-                            ? Colors.white
-                            : colors.textPrimary,
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        fontWeight: FontWeightHelper.semiBold,
+                        color: isActive ? Colors.white : colors.textPrimary,
                       ),
                     ),
             ),
@@ -97,9 +94,7 @@ class ResetPasswordStepsIndicator extends StatelessWidget {
                       ],
                     )
                   : null,
-              color: !isActive
-                  ?colors.surface
-                  : null,
+              color: !isActive ? colors.surface : null,
             ),
           );
         }

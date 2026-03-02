@@ -5,7 +5,7 @@ import 'package:quent/core/resources/app_sizes.dart';
 import 'package:quent/core/resources/font_weight_helper.dart';
 
 class AppTextStyles {
-  static const String _f = 'Alexandria';
+  static const String _f = 'Nunito';
 
   // Display
   static TextStyle get extraBold32 => TextStyle(

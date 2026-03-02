@@ -25,6 +25,9 @@ class RememberMeAndForgotPassword extends StatelessWidget {
               child: Row(
                 children: [
                   Checkbox(
+                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    visualDensity: VisualDensity.compact,
+                    checkColor: Colors.white,
                     value: rememberMe,
                     onChanged: (value) {
                       if (value != null) {
