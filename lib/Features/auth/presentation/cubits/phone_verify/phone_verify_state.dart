@@ -11,7 +11,6 @@ final class PhoneVerifyInitial extends PhoneVerifyState {}
 
 final class PhoneVerifyLoading extends PhoneVerifyState {}
 
-
 final class PhoneVerifyResendCode extends PhoneVerifyState {
   final VerifyPhoneResponseModel verifyPhoneResponseModel;
   const PhoneVerifyResendCode({required this.verifyPhoneResponseModel});
@@ -23,6 +22,6 @@ final class PhoneVerifyCodeVerified extends PhoneVerifyState {
 }
 
 final class PhoneVerifyError extends PhoneVerifyState {
-  final  ApiErrorModel errorModel;
+  final ErrorModel errorModel;
   const PhoneVerifyError({required this.errorModel});
 }

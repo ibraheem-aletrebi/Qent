@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:quent/core/services/network/api_error_model.dart';
+import 'package:quent/core/services/remote/models/error_model.dart';
 
 class CustomErrorWidget extends StatelessWidget {
   const CustomErrorWidget({super.key, required this.error});
-  final ApiErrorModel error;
+  final ErrorModel error;
   @override
   Widget build(BuildContext context) {
     return Column(

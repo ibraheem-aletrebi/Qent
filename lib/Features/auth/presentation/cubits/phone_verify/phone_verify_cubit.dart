@@ -5,7 +5,7 @@ import 'package:quent/Features/auth/data/models/phone_verified_response_model.da
 import 'package:quent/Features/auth/data/models/verify_phone_response_model.dart';
 import 'package:quent/Features/auth/data/repo/signup_repo.dart';
 import 'package:quent/core/services/local/local_secure_storage_helper.dart';
-import 'package:quent/core/services/network/api_error_model.dart';
+import 'package:quent/core/services/remote/models/error_model.dart';
 part 'phone_verify_state.dart';
 
 class PhoneVerifyCubit extends Cubit<PhoneVerifyState> {

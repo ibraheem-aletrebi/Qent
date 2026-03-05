@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:quent/core/services/network/dio_client.dart';
+import 'package:quent/core/services/remote/dio_client.dart';
 
 class ApiService {
   final Dio _dio = DioClient().dio;

@@ -8,7 +8,7 @@ import 'package:quent/Features/auth/presentation/components/forgot_password/rese
 import 'package:quent/Features/auth/presentation/components/forgot_password/verify_otp/reset_password_otp_view.dart';
 import 'package:quent/Features/auth/presentation/components/forgot_password/reset_password_request/reset_password_request_view.dart';
 import 'package:quent/core/services/local/local_secure_storage_helper.dart';
-import 'package:quent/core/services/network/api_error_model.dart';
+import 'package:quent/core/services/remote/models/error_model.dart';
 
 part 'forgot_password_flow_state.dart';
 

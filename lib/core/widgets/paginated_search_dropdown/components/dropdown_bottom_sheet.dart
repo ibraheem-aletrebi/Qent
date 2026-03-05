@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quent/core/cubits/theme_cubit/theme_cubit.dart';
-import 'package:quent/core/services/network/api_local_status_code.dart';
+import 'package:quent/core/services/remote/api_local_status_code.dart';
 import 'package:quent/core/widgets/custom_error_widget.dart';
 import 'package:quent/core/widgets/paginated_search_dropdown/components/search_field.dart';
 import 'package:quent/generated/l10n.dart';

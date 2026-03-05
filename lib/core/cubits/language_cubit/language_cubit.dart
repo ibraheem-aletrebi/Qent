@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quent/core/constants/hive_keys.dart';
 import 'package:quent/core/cubits/language_cubit/language_state.dart';
 import 'package:quent/core/services/local/local_storage_helper.dart';
+import 'package:quent/core/services/remote/api_error_handler.dart';
 
 class LanguageCubit extends Cubit<LanguageState> {
   LanguageCubit() : super(const LanguageInitial(languageCode: 'en')) {
@@ -16,6 +17,7 @@ class LanguageCubit extends Cubit<LanguageState> {
         ? LocalStorageHelper().getValue<String>(HiveKeys.languageCode)
         : 'en';
     currentLangCode = result!;
+    ApiErrorHandler().isArabic = isArabic();
     emit(LanguageChanged(languageCode: currentLangCode));
   }
 
@@ -25,6 +27,7 @@ class LanguageCubit extends Cubit<LanguageState> {
       langCode,
     );
     currentLangCode = langCode;
+    ApiErrorHandler().isArabic = isArabic();
     emit(LanguageChanged(languageCode: currentLangCode));
   }
 

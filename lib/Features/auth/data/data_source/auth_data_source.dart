@@ -10,7 +10,7 @@ import 'package:quent/Features/auth/data/models/signup_request_model.dart';
 import 'package:quent/Features/auth/data/models/signup_response_model.dart';
 import 'package:quent/Features/auth/data/models/verify_phone_response_model.dart';
 import 'package:quent/core/constants/api_end_points.dart';
-import 'package:quent/core/services/network/api_service.dart';
+import 'package:quent/core/services/remote/api_service.dart';
 
 class AuthDataSource {
   final ApiService apiService;

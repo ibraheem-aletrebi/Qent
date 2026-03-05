@@ -21,7 +21,7 @@ class LoginSuccess extends LoginState {
 }
 
 class LoginError extends LoginState {
-  final ApiErrorModel apiErrorModel;
+  final ErrorModel apiErrorModel;
 
   const LoginError({required this.apiErrorModel});
 

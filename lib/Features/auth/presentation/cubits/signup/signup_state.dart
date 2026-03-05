@@ -24,7 +24,7 @@ final class SignupLoading extends SignupState {
 }
 
 final class SignupFailure extends SignupState {
-  final ApiErrorModel error;
+  final ErrorModel error;
 
   const SignupFailure({required this.error});
 
@@ -47,5 +47,7 @@ final class SignupValidationFailed extends SignupState {
 
 final class SignUpSuccessAndPhoneVerifyCodeSent extends SignupState {
   final VerifyPhoneResponseModel verifyPhoneResponseModel;
-  const SignUpSuccessAndPhoneVerifyCodeSent({required this.verifyPhoneResponseModel});
+  const SignUpSuccessAndPhoneVerifyCodeSent({
+    required this.verifyPhoneResponseModel,
+  });
 }

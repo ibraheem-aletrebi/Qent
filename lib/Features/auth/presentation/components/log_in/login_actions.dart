@@ -9,12 +9,13 @@ class LoginActions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LoginCubit, LoginState>(
+    return BlocSelector<LoginCubit, LoginState, bool>(
+      selector: (state) => state is LoginLoading,
       builder: (context, state) {
         return CustomButton(
           text: S.of(context).loginButton,
           onPressed: () => context.read<LoginCubit>().login(),
-          isLoading: state is LoginLoading,
+          isLoading: state,
         );
       },
     );

@@ -14,14 +14,20 @@ class LoginViewBodyBlocConsumer extends StatelessWidget {
     return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
         if (state is LoginSuccess) {
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(  S.of(context).loginSuccess)));
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(S.of(context).loginSuccess)));
 
           context.pushReplacementNamed(AppRoutes.main);
         }
         if (state is LoginError) {
-                              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text( state.apiErrorModel.message)));
-
-    
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                state.apiErrorModel.action ?? state.apiErrorModel.message,
+              ),
+            ),
+          );
         }
       },
       builder: (context, state) {

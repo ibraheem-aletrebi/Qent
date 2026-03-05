@@ -7,7 +7,7 @@ import 'package:quent/Features/auth/data/models/signup_response_model.dart';
 import 'package:quent/Features/auth/data/models/verify_phone_response_model.dart';
 import 'package:quent/core/models/country_model.dart';
 import 'package:quent/core/models/location_model.dart';
-import 'package:quent/core/services/network/api_result.dart';
+import 'package:quent/core/services/remote/api_result.dart';
 import 'package:quent/core/widgets/paginated_search_dropdown/models/paginated_response.dart';
 
 class SignupRepo {

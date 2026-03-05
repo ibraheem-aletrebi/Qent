@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:quent/core/services/network/api_error_model.dart';
+import 'package:quent/core/services/remote/models/error_model.dart';
 
 class PaginatedDropdownState<T> extends Equatable {
   final List<T> items;
@@ -7,7 +7,7 @@ class PaginatedDropdownState<T> extends Equatable {
   final bool isLoading;
   final bool hasMore;
   final String searchQuery;
-  final ApiErrorModel? error;
+  final ErrorModel? error;
   final int currentPage;
 
   const PaginatedDropdownState({
@@ -26,7 +26,7 @@ class PaginatedDropdownState<T> extends Equatable {
     bool? hasMore,
     String? searchQuery,
     T? selectedItem,
-    ApiErrorModel? error,
+    ErrorModel? error,
   }) {
     return PaginatedDropdownState<T>(
       items: items ?? this.items,

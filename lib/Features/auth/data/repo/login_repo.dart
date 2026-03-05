@@ -3,7 +3,7 @@ import 'package:quent/Features/auth/data/models/forgot_password_response_model.d
 import 'package:quent/Features/auth/data/models/login_request_model.dart';
 import 'package:quent/Features/auth/data/models/login_response_model.dart';
 import 'package:quent/Features/auth/data/models/reset_password_request_model.dart';
-import 'package:quent/core/services/network/api_result.dart';
+import 'package:quent/core/services/remote/api_result.dart';
 
 class LoginRepo {
   final AuthDataSource authDataSource;

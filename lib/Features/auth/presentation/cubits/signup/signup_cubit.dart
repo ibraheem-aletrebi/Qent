@@ -7,7 +7,7 @@ import 'package:quent/Features/auth/data/repo/signup_repo.dart';
 import 'package:quent/core/models/country_model.dart';
 import 'package:quent/core/models/location_model.dart';
 import 'package:quent/core/services/local/local_secure_storage_helper.dart';
-import 'package:quent/core/services/network/api_error_model.dart';
+import 'package:quent/core/services/remote/models/error_model.dart';
 part 'signup_state.dart';
 
 class SignupCubit extends Cubit<SignupState> {
@@ -63,7 +63,10 @@ class SignupCubit extends Cubit<SignupState> {
     if (selectedCountry == null || selectedLocation == null) {
       emit(
         SignupFailure(
-          error: ApiErrorModel(message: 'Please select location and country'),
+          error: ErrorModel(
+            message: 'Please select location and country',
+           
+          ),
         ),
       );
       return;

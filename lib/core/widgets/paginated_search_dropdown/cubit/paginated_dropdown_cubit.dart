@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
-import 'package:quent/core/services/network/api_result.dart';
+import 'package:quent/core/services/remote/api_result.dart';
 import 'package:quent/core/widgets/paginated_search_dropdown/models/paginated_response.dart';
 import 'paginated_dropdown_state.dart';
 

@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:quent/core/services/network/interceptors/auth_interceptor.dart';
-import 'package:quent/core/services/network/interceptors/logger_interceptor.dart';
+import 'package:quent/core/services/remote/interceptors/auth_interceptor.dart';
+import 'package:quent/core/services/remote/interceptors/logger_interceptor.dart';
 
 class DioClient {
   DioClient._internal();

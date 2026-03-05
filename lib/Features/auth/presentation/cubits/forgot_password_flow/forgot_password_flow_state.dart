@@ -7,31 +7,29 @@ sealed class ForgotPasswordFlowState extends Equatable {
   List<Object?> get props => [];
 }
 
-
-
 final class ForgotPasswordInitial extends ForgotPasswordFlowState {}
-
 
 final class Loading extends ForgotPasswordFlowState {}
 
 final class ForgotPasswordRequestSuccess extends ForgotPasswordFlowState {
   final ForgotPasswordResponseModel forgotPasswordResponseModel;
-  const ForgotPasswordRequestSuccess({required this.forgotPasswordResponseModel});
+  const ForgotPasswordRequestSuccess({
+    required this.forgotPasswordResponseModel,
+  });
 }
 
 final class Failure extends ForgotPasswordFlowState {
-  final ApiErrorModel error;
+  final ErrorModel error;
   const Failure({required this.error});
 }
 
 final class OtpVerificationSuccess extends ForgotPasswordFlowState {
   const OtpVerificationSuccess();
 }
+
 final class OtpVerificationError extends ForgotPasswordFlowState {
   const OtpVerificationError();
 }
-
-
 
 final class ResendOtpSuccess extends ForgotPasswordFlowState {
   final ForgotPasswordResponseModel forgotPasswordResponseModel;
@@ -46,5 +44,3 @@ final class ResendOtpError extends ForgotPasswordFlowState {
 }
 
 final class ResetPasswordSuccess extends ForgotPasswordFlowState {}
-
-

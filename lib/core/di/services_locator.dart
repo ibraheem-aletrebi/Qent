@@ -7,8 +7,8 @@ import 'package:quent/Features/auth/presentation/cubits/phone_verify/phone_verif
 import 'package:quent/Features/auth/presentation/cubits/login/login_cubit.dart';
 import 'package:quent/Features/auth/presentation/cubits/signup/signup_cubit.dart';
 import 'package:quent/core/services/local/local_storage_helper.dart';
-import 'package:quent/core/services/network/api_service.dart';
-import 'package:quent/core/services/network/dio_client.dart';
+import 'package:quent/core/services/remote/api_service.dart';
+import 'package:quent/core/services/remote/dio_client.dart';
 
 final sl = GetIt.instance;
 
