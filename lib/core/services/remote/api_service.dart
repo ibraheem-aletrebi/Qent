@@ -1,15 +1,16 @@
 import 'package:dio/dio.dart';
-import 'package:quent/core/services/remote/dio_client.dart';
 
 class ApiService {
-  final Dio _dio = DioClient().dio;
+  final Dio dio ;
+
+  ApiService({required this.dio});
 
   Future<Response> get(
     String path, {
     Map<String, dynamic>? queryParameters,
     Options? options,
   }) {
-    return _dio.get(
+    return dio.get(
       path,
       queryParameters: queryParameters,
       options: options,
@@ -22,7 +23,7 @@ class ApiService {
     Map<String, dynamic>? queryParameters,
     Options? options,
   }) {
-    return _dio.post(
+    return dio.post(
       path,
       data: data,
       queryParameters: queryParameters,
@@ -36,7 +37,7 @@ class ApiService {
     Map<String, dynamic>? queryParameters,
     Options? options,
   }) {
-    return _dio.put(
+    return dio.put(
       path,
       data: data,
       queryParameters: queryParameters,
@@ -50,7 +51,7 @@ class ApiService {
     Map<String, dynamic>? queryParameters,
     Options? options,
   }) {
-    return _dio.delete(
+    return dio.delete(
       path,
       data: data,
       queryParameters: queryParameters,

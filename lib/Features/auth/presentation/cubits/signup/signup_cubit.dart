@@ -1,19 +1,20 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:quent/Features/auth/domain/repo/auth_repo.dart';
 import 'package:quent/Features/auth/data/models/signup_request_model.dart';
 import 'package:quent/Features/auth/data/models/verify_phone_response_model.dart';
-import 'package:quent/Features/auth/data/repo/signup_repo.dart';
 import 'package:quent/core/models/country_model.dart';
 import 'package:quent/core/models/location_model.dart';
 import 'package:quent/core/services/local/local_secure_storage_helper.dart';
 import 'package:quent/core/services/remote/models/error_model.dart';
+
 part 'signup_state.dart';
 
 class SignupCubit extends Cubit<SignupState> {
-  SignupCubit({required this.repo}) : super(SignupInitial());
+  SignupCubit({required this.authRepo}) : super(SignupInitial());
 
-  final SignupRepo repo;
+  final AuthRepo authRepo;
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -54,7 +55,7 @@ class SignupCubit extends Cubit<SignupState> {
     emit(SignupToggleCar(addCar: addCar));
   }
 
-  void signup() async {
+  Future<void> signup() async {
     if (!formKey.currentState!.validate()) {
       emit(SignupValidationFailed());
       return;
@@ -63,17 +64,15 @@ class SignupCubit extends Cubit<SignupState> {
     if (selectedCountry == null || selectedLocation == null) {
       emit(
         SignupFailure(
-          error: ErrorModel(
-            message: 'Please select location and country',
-           
-          ),
+          error: ErrorModel(message: 'Please select location and country'),
         ),
       );
       return;
     }
 
     emit(SignupLoading());
-    final result = await repo.signUp(
+
+    final signupResult = await authRepo.signUp(
       signupRequestModel: SignupRequestModel(
         fullName:
             '${firstNameController.text.trim()} ${lastNameController.text.trim()}',
@@ -88,24 +87,27 @@ class SignupCubit extends Cubit<SignupState> {
       ),
     );
 
-    result.when(
-      onSuccess: (data) async {
-        LocalSecureStorageHelper().saveTokens(
-          access: data.tokens.access,
-          refresh: data.tokens.refresh,
+    signupResult.when(
+      onSuccess: (response) async {
+        await LocalSecureStorageHelper().saveTokens(
+          access: response.tokens.access,
+          refresh: response.tokens.refresh,
         );
-        final verifyResult = await repo.verifyPhone(
+
+        final verifyResult = await authRepo.verifyPhone(
           phone: phoneController.text.trim(),
         );
+
         verifyResult.when(
-          onSuccess: (data) {
-            LocalSecureStorageHelper().write(
+          onSuccess: (VerifyPhoneResponseModel verifyResponse) async {
+            await LocalSecureStorageHelper().write(
               key: SecureStorageKeys.verifyToken,
-              value: data.verifyToken,
+              value: verifyResponse.verifyToken,
             );
+
             emit(
               SignUpSuccessAndPhoneVerifyCodeSent(
-                verifyPhoneResponseModel: data,
+                verifyPhoneResponseModel: verifyResponse,
               ),
             );
           },
@@ -114,7 +116,9 @@ class SignupCubit extends Cubit<SignupState> {
           },
         );
       },
-      onError: (e) => emit(SignupFailure(error: e)),
+      onError: (error) {
+        emit(SignupFailure(error: error));
+      },
     );
   }
 

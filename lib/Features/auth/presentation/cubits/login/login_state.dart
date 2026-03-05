@@ -21,12 +21,12 @@ class LoginSuccess extends LoginState {
 }
 
 class LoginError extends LoginState {
-  final ErrorModel apiErrorModel;
+  final ErrorModel errorModel;
 
-  const LoginError({required this.apiErrorModel});
+  const LoginError({required this.errorModel});
 
   @override
-  List<Object?> get props => [apiErrorModel];
+  List<Object?> get props => [errorModel];
 }
 
 class LoginToggleRememberMe extends LoginState {

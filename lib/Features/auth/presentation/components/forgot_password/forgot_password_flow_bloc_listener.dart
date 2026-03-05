@@ -14,14 +14,20 @@ class ForgotPasswordFlowBlocListener extends StatelessWidget {
     return BlocListener<ForgotPasswordFlowCubit, ForgotPasswordFlowState>(
       listener: (context, state) {
         if (state is Failure) {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.error.message)));
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(state.errorMode.message)));
         }
         if (state is OtpVerificationError) {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(  S.of(context).otpIsNotCorrect)));
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(S.of(context).otpIsNotCorrect)),
+          );
         }
         if (state is ResetPasswordSuccess) {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(  S.of(context).passwordChangedSuccessfully)));
-          
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(S.of(context).passwordChangedSuccessfully)),
+          );
+
           context.pushReplacementNamed(AppRoutes.login);
         }
       },

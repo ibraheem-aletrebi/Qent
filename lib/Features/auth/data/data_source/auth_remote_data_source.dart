@@ -12,10 +12,9 @@ import 'package:quent/Features/auth/data/models/verify_phone_response_model.dart
 import 'package:quent/core/constants/api_end_points.dart';
 import 'package:quent/core/services/remote/api_service.dart';
 
-class AuthDataSource {
+class AuthRemoteDataSource {
   final ApiService apiService;
-  const AuthDataSource({required this.apiService});
-  // logIn
+  const AuthRemoteDataSource({required this.apiService});
   Future<LoginResponseModel> login({
     required LoginRequestModel loginRequestMode,
   }) async {
@@ -26,8 +25,6 @@ class AuthDataSource {
 
     return LoginResponseModel.fromJson(response.data);
   }
-
-  // ForgetPassword
 
   Future<ForgotPasswordResponseModel> forgotPasswordRequest({
     required String email,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quent/Features/auth/data/repo/signup_repo.dart';
+import 'package:quent/Features/auth/domain/repo/auth_repo.dart';
 import 'package:quent/Features/auth/presentation/cubits/signup/signup_cubit.dart';
-import 'package:quent/core/di/services_locator.dart';
+import 'package:quent/injector.dart';
 import 'package:quent/core/models/country_model.dart';
 import 'package:quent/core/models/location_model.dart';
 import 'package:quent/core/resources/app_sizes.dart';
@@ -28,10 +28,10 @@ class _CountryLocationSelectorState extends State<CountryLocationSelector> {
   void initState() {
     super.initState();
     _countryCubit = PaginatedDropdownCubit<CountryModel>(
-      fetchData: sl<SignupRepo>().fetchCountries,
+      fetchData: sl<AuthRepo>().fetchCountries,
     );
     _locationCubit = PaginatedDropdownCubit<LocationModel>(
-      fetchData: sl<SignupRepo>().fetchLocations,
+      fetchData: sl<AuthRepo>().fetchLocations,
     );
   }
 

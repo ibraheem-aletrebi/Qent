@@ -1,9 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quent/Features/auth/domain/repo/auth_repo.dart';
 import 'package:quent/Features/auth/data/models/forgot_password_response_model.dart';
 import 'package:quent/Features/auth/data/models/reset_password_request_model.dart';
-import 'package:quent/Features/auth/data/repo/login_repo.dart';
 import 'package:quent/Features/auth/presentation/components/forgot_password/reset_new_password/reset_new_password_view.dart';
 import 'package:quent/Features/auth/presentation/components/forgot_password/verify_otp/reset_password_otp_view.dart';
 import 'package:quent/Features/auth/presentation/components/forgot_password/reset_password_request/reset_password_request_view.dart';
@@ -13,11 +13,10 @@ import 'package:quent/core/services/remote/models/error_model.dart';
 part 'forgot_password_flow_state.dart';
 
 class ForgotPasswordFlowCubit extends Cubit<ForgotPasswordFlowState> {
-  ForgotPasswordFlowCubit({required this.repo})
+  ForgotPasswordFlowCubit({required this.authRepo})
     : super(ForgotPasswordInitial());
 
-  final LoginRepo repo;
-
+  final AuthRepo authRepo;
   final emailController = TextEditingController();
   final otpController = TextEditingController();
   final passwordController = TextEditingController();
@@ -32,10 +31,10 @@ class ForgotPasswordFlowCubit extends Cubit<ForgotPasswordFlowState> {
   final GlobalKey<FormState> otpFormKey = GlobalKey<FormState>();
   final GlobalKey<FormState> resetPasswordFormKey = GlobalKey<FormState>();
 
-  final List<Widget> steps = [
-    const ResetPasswordRequestView(),
-    const ResetPasswordOtpView(),
-    const ResetNewPasswordView(),
+  final List<Widget> steps = const [
+    ResetPasswordRequestView(),
+    ResetPasswordOtpView(),
+    ResetNewPasswordView(),
   ];
 
   int get numberOfSteps => steps.length;
@@ -48,32 +47,39 @@ class ForgotPasswordFlowCubit extends Cubit<ForgotPasswordFlowState> {
     );
   }
 
-  void forgotPasswordRequest() async {
+  Future<void> forgotPasswordRequest() async {
     if (resetPasswordRequestFormKey.currentState?.validate() != true) return;
+
     emit(Loading());
-    final result = await repo.forgotPasswordRequest(
+
+    final result = await authRepo.forgotPasswordRequest(
       email: emailController.text.trim(),
     );
+
     result.when(
-      onSuccess: (data) {
+      onSuccess: (ForgotPasswordResponseModel data) async {
         otp = data.code;
-        LocalSecureStorageHelper().write(
+
+        await LocalSecureStorageHelper().write(
           key: SecureStorageKeys.resetToken,
           value: data.resetToken,
         );
+
         emit(ForgotPasswordRequestSuccess(forgotPasswordResponseModel: data));
+
         _goToNext();
       },
       onError: (error) {
-        emit(Failure(error: error));
+        emit(Failure(errorMode:error));
       },
     );
   }
 
   Future<void> verifyOtp() async {
     if (otpFormKey.currentState?.validate() != true) return;
+
     emit(Loading());
-    await Future.delayed(const Duration(seconds: 3));
+
     if (otp == otpController.text.trim()) {
       emit(OtpVerificationSuccess());
       _goToNext();
@@ -82,34 +88,41 @@ class ForgotPasswordFlowCubit extends Cubit<ForgotPasswordFlowState> {
     }
   }
 
-  void resendOtp() async {
+  Future<void> resendOtp() async {
     otpController.clear();
-    await Future.delayed(const Duration(seconds: 30));
-    final result = await repo.forgotPasswordRequest(
+    emit(Loading());
+
+    final result = await authRepo.forgotPasswordRequest(
       email: emailController.text.trim(),
     );
+
     result.when(
-      onSuccess: (data) {
-        LocalSecureStorageHelper().write(
+      onSuccess: (ForgotPasswordResponseModel data) async {
+        otp = data.code;
+
+        await LocalSecureStorageHelper().write(
           key: SecureStorageKeys.resetToken,
           value: data.resetToken,
         );
-        otp = data.code;
+
         emit(ResendOtpSuccess(forgotPasswordResponseModel: data));
       },
       onError: (error) {
-        emit(Failure(error: error));
+        emit(Failure(errorMode:error));
       },
     );
   }
 
-  void resetPassword() async {
+  Future<void> resetPassword() async {
     if (resetPasswordFormKey.currentState?.validate() != true) return;
+
     emit(Loading());
+
     final resetToken = await LocalSecureStorageHelper().read(
       SecureStorageKeys.resetToken,
     );
-    final result = await repo.resetPasswordRequest(
+
+    final result = await authRepo.resetPasswordRequest(
       resetPasswordRequestModel: ResetPasswordRequestModel(
         resetToken: resetToken!,
         code: otpController.text.trim(),
@@ -117,12 +130,13 @@ class ForgotPasswordFlowCubit extends Cubit<ForgotPasswordFlowState> {
         confirmPassword: confirmPasswordController.text.trim(),
       ),
     );
+
     result.when(
-      onSuccess: (data) {
+      onSuccess: (_) {
         emit(ResetPasswordSuccess());
       },
       onError: (error) {
-        emit(Failure(error: error));
+        emit(Failure(errorMode:error));
       },
     );
   }
@@ -130,10 +144,12 @@ class ForgotPasswordFlowCubit extends Cubit<ForgotPasswordFlowState> {
   void resetFlow() {
     currentStep = 0;
     pageController.jumpToPage(0);
+
     emailController.clear();
     otpController.clear();
     passwordController.clear();
     confirmPasswordController.clear();
+
     emit(ForgotPasswordInitial());
   }
 

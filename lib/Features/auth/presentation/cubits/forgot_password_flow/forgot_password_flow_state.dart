@@ -19,8 +19,8 @@ final class ForgotPasswordRequestSuccess extends ForgotPasswordFlowState {
 }
 
 final class Failure extends ForgotPasswordFlowState {
-  final ErrorModel error;
-  const Failure({required this.error});
+  final ErrorModel errorMode;
+  const Failure({required this.errorMode});
 }
 
 final class OtpVerificationSuccess extends ForgotPasswordFlowState {
@@ -37,10 +37,10 @@ final class ResendOtpSuccess extends ForgotPasswordFlowState {
 }
 
 final class ResendOtpError extends ForgotPasswordFlowState {
-  final String message;
-  const ResendOtpError(this.message);
+  final ErrorModel errorModel;
+  const ResendOtpError(this.errorModel);
   @override
-  List<Object?> get props => [message];
+  List<Object?> get props => [errorModel];
 }
 
 final class ResetPasswordSuccess extends ForgotPasswordFlowState {}

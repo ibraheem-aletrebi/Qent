@@ -4,7 +4,7 @@ import 'package:quent/Features/auth/presentation/components/auth_action_promp.da
 import 'package:quent/Features/auth/presentation/components/log_in/login_view_body_bloc_consumer.dart';
 import 'package:quent/Features/auth/presentation/cubits/login/login_cubit.dart';
 import 'package:quent/Features/auth/presentation/views/signup_view.dart';
-import 'package:quent/core/di/services_locator.dart';
+import 'package:quent/injector.dart';
 import 'package:quent/core/extensions/navigation_extension.dart';
 import 'package:quent/generated/l10n.dart';
 

@@ -7,7 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:quent/app/qent_app.dart';
+import 'package:quent/qent_app.dart';
 
 
 void main() {

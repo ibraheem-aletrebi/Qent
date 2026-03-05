@@ -24,7 +24,7 @@ class LoginViewBodyBlocConsumer extends StatelessWidget {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(
-                state.apiErrorModel.action ?? state.apiErrorModel.message,
+                state.errorModel.action ?? state.errorModel.message,
               ),
             ),
           );
