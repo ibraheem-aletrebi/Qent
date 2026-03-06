@@ -13,4 +13,7 @@ class ApiEndPoints {
   static const String verifyPhoneSendCode = '/auth/phone/request_verify_code/';
   static const String verifyPhoneResendCode = '/auth/phone/resend_verify_code/';
   static const String verifyPhoneConfirm = '/auth/phone/confirm_verify_code/';
+
+  // brand
+  static const String brands = '/brands';
 }
