@@ -1,5 +1,5 @@
 String convertToArabicNumber(int number) {
-  const arabicNumbers = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+  const arabicNumbers = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
   return number
       .toString()
       .split('')

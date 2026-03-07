@@ -13,7 +13,7 @@ class PhoneVerificationActions extends StatelessWidget {
   const PhoneVerificationActions({super.key});
   @override
   Widget build(BuildContext context) {
-  final colors=context.myColors;
+    final colors = context.myColors;
     return Column(
       children: [
         ResendOtpButton(
@@ -36,8 +36,8 @@ class PhoneVerificationActions extends StatelessWidget {
         ),
         SizedBox(height: AppSizes.h16),
         CustomButton(
-          borderColor:colors.primary,
-          textColor:  colors.primary,
+          borderColor: colors.primary,
+          textColor: colors.primary,
           backgroundColor: Colors.transparent,
           text: S.of(context).skipForNow,
           onPressed: () {

@@ -1,7 +1,7 @@
 class ApiEndPoints {
   // Authentication endPoints
   static const String login = '/auth/login/';
-  
+
   static const String forgotPasswordRequest = '/auth/forgot_password/';
   static const String resetPasswordRequest = '/auth/reset_password/';
 
@@ -16,4 +16,8 @@ class ApiEndPoints {
 
   // brand
   static const String brands = '/brands';
+
+  // cars
+  static const String bestCars='/cars/best';
+  static const String nearbyCars='/cars/nearest';
 }

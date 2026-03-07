@@ -119,7 +119,9 @@ class AuthRepoImp implements AuthRepo {
   }) async {
     try {
       return ApiResult.success(
-        await authRemoteDataSource.signup(signupRequestModel: signupRequestModel),
+        await authRemoteDataSource.signup(
+          signupRequestModel: signupRequestModel,
+        ),
       );
     } catch (e) {
       return ApiResult.error(e);
@@ -131,7 +133,9 @@ class AuthRepoImp implements AuthRepo {
     required String phone,
   }) async {
     try {
-      return ApiResult.success(await authRemoteDataSource.verifyPhone(phone: phone));
+      return ApiResult.success(
+        await authRemoteDataSource.verifyPhone(phone: phone),
+      );
     } catch (e) {
       return ApiResult.error(e);
     }

@@ -1,4 +1,3 @@
-
 class VerifyPhoneResponseModel {
   final String message;
   final String code;
@@ -17,5 +16,4 @@ class VerifyPhoneResponseModel {
       verifyToken: json['verify_token'],
     );
   }
-  
 }

@@ -20,7 +20,7 @@ class HomeViewBody extends StatelessWidget {
         HomeSliverBestCarsSections(),
         SliverToBoxAdapter(child: SizedBox(height: 24)),
         HomeSliverNearbyCarsSections(),
-        SliverToBoxAdapter(child: SizedBox(height: AppSizes.h90)),
+        SliverToBoxAdapter(child: SizedBox(height: AppSizes.h100)),
       ],
     );
   }

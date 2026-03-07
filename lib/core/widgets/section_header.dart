@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:quent/core/extensions/color_extension.dart';
 import 'package:quent/core/resources/app_sizes.dart';
+import 'package:quent/generated/l10n.dart';
 
 class SectionHeader extends StatelessWidget {
   final String title;
-  final String actionText;
+  final String? actionText;
   final VoidCallback? onActionTap;
   final EdgeInsets? padding;
 
   const SectionHeader({
     super.key,
     required this.title,
-    this.actionText = 'See all',
+    this.actionText,
     this.onActionTap,
     this.padding,
   });
@@ -37,7 +38,10 @@ class SectionHeader extends StatelessWidget {
                 minimumSize: const Size(48, 36),
                 tapTargetSize: MaterialTapTargetSize.shrinkWrap,
               ),
-              child: Text(actionText, style: TextTheme.of(context).bodyMedium),
+              child: Text(
+                actionText ?? S.of(context).seeAll,
+                style: TextTheme.of(context).bodyMedium,
+              ),
             ),
         ],
       ),

@@ -80,9 +80,7 @@ class _YesNoOptionState extends State<YesNoOption> {
           duration: const Duration(milliseconds: 300),
           padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
           decoration: BoxDecoration(
-            color: selected
-                ? color.withValues(alpha: .1)
-                : Colors.transparent,
+            color: selected ? color.withValues(alpha: .1) : Colors.transparent,
             border: Border.all(
               color: selected ? color : Colors.grey[300]!,
               width: 2,

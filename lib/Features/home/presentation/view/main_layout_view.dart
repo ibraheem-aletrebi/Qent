@@ -24,7 +24,7 @@ class MainLayoutView extends StatelessWidget {
             Positioned(
               left: AppSizes.w16,
               right: AppSizes.w16,
-              bottom: 0,
+              bottom: AppSizes.h16,
               child: CustomBottomNavigationBar(),
             ),
           ],

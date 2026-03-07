@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:quent/Features/home/data/models/brands_response_model.dart';
+import 'package:quent/Features/home/data/models/brands_response_model/brand_model.dart';
 import 'package:quent/Features/home/domain/use_cases/fetch_brands_use_case.dart';
 import 'package:quent/core/services/remote/models/error_model.dart';
 
@@ -14,14 +14,14 @@ class BrandCubit extends Cubit<BrandState> {
   final FetchBrandsUseCase _fetchBrandsUseCase;
 
   int _page = 1;
-  final List<BrandModel> brands = [];
+  final List<BrandModel> _brands = [];
 
   Future<void> fetchBrands({bool loadMore = false}) async {
     if (loadMore) {
-      emit(BrandLoadingMore(brandList: List.unmodifiable(brands)));
+      emit(BrandLoadingMore(brandList: List.unmodifiable(_brands)));
     } else {
       _page = 1;
-      brands.clear();
+      _brands.clear();
       emit(BrandLoading());
     }
 
@@ -29,11 +29,11 @@ class BrandCubit extends Cubit<BrandState> {
 
     result.when(
       onSuccess: (data) {
-        brands.addAll(data.brands);
+        _brands.addAll(data.brands);
         _page++;
         emit(
           BrandLoaded(
-            brandList: List.unmodifiable(brands),
+            brandList: List.unmodifiable(_brands),
             hasMore: data.meta.currentPage < data.meta.lastPage,
           ),
         );
@@ -43,7 +43,7 @@ class BrandCubit extends Cubit<BrandState> {
           emit(
             BrandLoadingMoreFailure(
               error: error,
-              brandList: List.unmodifiable(brands),
+              brandList: List.unmodifiable(_brands),
             ),
           );
         } else {

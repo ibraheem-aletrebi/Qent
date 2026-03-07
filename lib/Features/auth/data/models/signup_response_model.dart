@@ -1,4 +1,3 @@
-
 import 'package:quent/Features/auth/data/models/toke_model.dart';
 import 'package:quent/core/models/user_model.dart';
 
@@ -29,4 +28,3 @@ class SignupResponseModel {
     };
   }
 }
-

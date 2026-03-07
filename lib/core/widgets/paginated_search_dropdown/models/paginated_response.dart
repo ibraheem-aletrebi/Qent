@@ -26,5 +26,4 @@ class PaginatedResponse<T> {
       hasMore: hasMore,
     );
   }
-
 }

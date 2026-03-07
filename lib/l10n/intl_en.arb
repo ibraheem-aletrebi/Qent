@@ -92,5 +92,7 @@
   "otpEmailRequired": "Enter the code that we sent to your email to verify your account",
   "otpEmailValidation": "OTP must be 4 digits",
   "otpIsNotCorrect": "Your Code is not correct",
-  "passwordChangedSuccessfully": "Password changed successfully"
+  "passwordChangedSuccessfully": "Password changed successfully",
+  "Branding": "Branding",
+  "seeAll": "See All"
 }

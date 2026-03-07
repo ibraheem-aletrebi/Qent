@@ -12,12 +12,8 @@ typedef SearchCallback<T> = Future<List<T>> Function(String query, int page);
 typedef ItemSelectedCallback<T> = void Function(T item);
 
 /// Builder for custom item rendering
-typedef ItemBuilder<T> = Widget Function(
-  BuildContext context,
-  T item,
-  int index,
-  bool isSelected,
-);
+typedef ItemBuilder<T> =
+    Widget Function(BuildContext context, T item, int index, bool isSelected);
 
 class CustomPopupMenu<T> extends StatefulWidget {
   final List<T> initialItems;
@@ -180,7 +176,10 @@ class _CustomPopupMenuState<T> extends State<CustomPopupMenu<T>> {
   }
 
   void _applyPagination() {
-    final endIndex = (_currentPage * widget.itemsPerPage).clamp(0, _filteredItems.length);
+    final endIndex = (_currentPage * widget.itemsPerPage).clamp(
+      0,
+      _filteredItems.length,
+    );
     _displayedItems = _filteredItems.sublist(0, endIndex);
     _hasMore = endIndex < _filteredItems.length;
   }
@@ -341,13 +340,13 @@ class _CustomPopupMenuState<T> extends State<CustomPopupMenu<T>> {
             // Title bar
             if (widget.title != null || widget.actions != null)
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 12,
+                ),
                 decoration: BoxDecoration(
                   border: Border(
-                    bottom: BorderSide(
-                      color: theme.dividerColor,
-                      width: 1,
-                    ),
+                    bottom: BorderSide(color: theme.dividerColor, width: 1),
                   ),
                 ),
                 child: Row(
@@ -390,9 +389,7 @@ class _CustomPopupMenuState<T> extends State<CustomPopupMenu<T>> {
               ),
 
             // Content
-            Flexible(
-              child: _buildContent(theme),
-            ),
+            Flexible(child: _buildContent(theme)),
           ],
         ),
       ),
@@ -402,20 +399,24 @@ class _CustomPopupMenuState<T> extends State<CustomPopupMenu<T>> {
   Widget _buildContent(ThemeData theme) {
     if (_isLoading) {
       return Center(
-        child: widget.loadingWidget ??
-            const CircularProgressIndicator(),
+        child: widget.loadingWidget ?? const CircularProgressIndicator(),
       );
     }
 
     if (_errorMessage != null) {
       return Center(
-        child: widget.errorBuilder?.call(_errorMessage!) ??
+        child:
+            widget.errorBuilder?.call(_errorMessage!) ??
             Padding(
               padding: const EdgeInsets.all(16),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(Icons.error_outline, size: 48, color: theme.colorScheme.error),
+                  Icon(
+                    Icons.error_outline,
+                    size: 48,
+                    color: theme.colorScheme.error,
+                  ),
                   const SizedBox(height: 8),
                   Text(
                     'Error: $_errorMessage',
@@ -435,7 +436,8 @@ class _CustomPopupMenuState<T> extends State<CustomPopupMenu<T>> {
 
     if (_displayedItems.isEmpty) {
       return Center(
-        child: widget.emptyWidget ??
+        child:
+            widget.emptyWidget ??
             Padding(
               padding: const EdgeInsets.all(16),
               child: Column(
@@ -465,8 +467,7 @@ class _CustomPopupMenuState<T> extends State<CustomPopupMenu<T>> {
           return Center(
             child: Padding(
               padding: const EdgeInsets.all(16),
-              child: widget.loadingWidget ??
-                  const CircularProgressIndicator(),
+              child: widget.loadingWidget ?? const CircularProgressIndicator(),
             ),
           );
         }
@@ -478,9 +479,7 @@ class _CustomPopupMenuState<T> extends State<CustomPopupMenu<T>> {
           onTap: () => _onItemTap(item),
           child: Container(
             height: widget.itemHeight,
-            color: isSelected
-                ? theme.primaryColor.withOpacity(0.1)
-                : null,
+            color: isSelected ? theme.primaryColor.withOpacity(0.1) : null,
             child: widget.itemBuilder(context, item, index, isSelected),
           ),
         );

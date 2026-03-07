@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quent/Features/home/data/models/brands_response_model.dart';
+import 'package:quent/Features/home/data/models/brands_response_model/brand_model.dart';
 import 'package:quent/Features/home/presentation/components/home/brand_item.dart';
-import 'package:quent/Features/home/presentation/cubits/cubit/brand_cubit.dart';
+import 'package:quent/Features/home/presentation/cubits/brands/brand_cubit.dart';
 import 'package:quent/core/resources/app_sizes.dart';
 import 'package:quent/core/widgets/custom_skeletonizer.dart';
 import 'package:quent/core/widgets/loading_widget.dart';
 import 'package:quent/core/widgets/section_header.dart';
+import 'package:quent/generated/l10n.dart';
 
 class HomeSliverBrandingSection extends StatefulWidget {
   const HomeSliverBrandingSection({super.key});
@@ -33,6 +34,7 @@ class _HomeSliverBrandingSectionState extends State<HomeSliverBrandingSection> {
       cubit.fetchBrands(loadMore: true);
     }
   }
+
   bool _isNearEnd() {
     if (!_scrollController.hasClients) return false;
     final position = _scrollController.position;
@@ -40,6 +42,7 @@ class _HomeSliverBrandingSectionState extends State<HomeSliverBrandingSection> {
     if (position.maxScrollExtent == 0) return false;
     return position.pixels >= position.maxScrollExtent * 0.8;
   }
+
   @override
   void dispose() {
     _scrollController
@@ -51,12 +54,12 @@ class _HomeSliverBrandingSectionState extends State<HomeSliverBrandingSection> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height * 0.15;
-
+    final translate = S.of(context);
     return SliverToBoxAdapter(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SectionHeader(title: 'Brands'),
+          SectionHeader(title: translate.Branding, onActionTap: () {}),
           const SizedBox(height: 12),
           SizedBox(
             height: height,
@@ -68,7 +71,7 @@ class _HomeSliverBrandingSectionState extends State<HomeSliverBrandingSection> {
                   BrandLoadingMoreFailure(:final brandList) => brandList,
                   BrandLoading() => List.generate(
                     4,
-                    (_) => BrandModel(id: 0, name: 'Loading', imageUrl: ''),
+                    (_) => BrandModel(id: 0, name: 'Loading', image: ''),
                   ),
                   _ => <BrandModel>[],
                 };

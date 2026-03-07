@@ -1,9 +1,12 @@
-import 'package:quent/Features/home/data/models/brands_response_model.dart';
+import 'package:quent/Features/home/data/models/brands_response_model/brands_response_model.dart';
+import 'package:quent/Features/home/data/models/car_response_model/car_response_model.dart';
 import 'package:quent/core/constants/api_end_points.dart';
 import 'package:quent/core/services/remote/api_service.dart';
 
 abstract class HomeRemoteDataSource {
   Future<BrandsResponseModel> fetchBrands({int pageNumber = 1});
+  Future<CarResponseModel> fetchBestCars({int pageNumber = 1});
+  Future<CarResponseModel> fetchNearbyCars({int pageNumber = 1});
 }
 
 class HomeRemoteDataSourceImp implements HomeRemoteDataSource {
@@ -16,6 +19,25 @@ class HomeRemoteDataSourceImp implements HomeRemoteDataSource {
       ApiEndPoints.brands,
       queryParameters: {'page': pageNumber},
     );
-  return BrandsResponseModel.fromJson(response.data);  
+    return BrandsResponseModel.fromJson(response.data);
   }
+
+   @override
+  Future<CarResponseModel> fetchBestCars({int pageNumber = 1}) async {
+    final response = await _apiService.get(
+      ApiEndPoints.bestCars,
+      queryParameters: {'page': pageNumber},
+    );
+    return CarResponseModel.fromJson(response.data);
+  }
+
+  @override
+  Future<CarResponseModel> fetchNearbyCars({int pageNumber = 1}) async {
+    final response = await _apiService.get(
+      ApiEndPoints.nearbyCars,
+      queryParameters: {'page': pageNumber},
+    );
+    return CarResponseModel.fromJson(response.data);
+  }
+  
 }

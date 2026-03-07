@@ -1,4 +1,3 @@
-
 import 'package:quent/core/models/user_model.dart';
 
 class PhoneVerifiedResponseModel {
@@ -14,5 +13,3 @@ class PhoneVerifiedResponseModel {
     );
   }
 }
-
-

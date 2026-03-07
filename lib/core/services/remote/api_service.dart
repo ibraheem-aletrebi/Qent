@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
 class ApiService {
-  final Dio dio ;
+  final Dio dio;
 
   ApiService({required this.dio});
 
@@ -10,11 +10,7 @@ class ApiService {
     Map<String, dynamic>? queryParameters,
     Options? options,
   }) {
-    return dio.get(
-      path,
-      queryParameters: queryParameters,
-      options: options,
-    );
+    return dio.get(path, queryParameters: queryParameters, options: options);
   }
 
   Future<Response> post(

@@ -92,5 +92,7 @@
   "otpEmailRequired": "اكتب الكود اللي بعتناه على الإيميل علشان نأكد حسابك",
   "otpEmailValidation": "الكود لازم يبقى 4 أرقام",
   "otpIsNotCorrect": "الكود اللي دخلته غلط",
-  "passwordChangedSuccessfully": "تم تغيير الباسورد بنجاح"
+  "passwordChangedSuccessfully": "تم تغيير الباسورد بنجاح",
+  "Branding": "الماركات",
+  "seeAll": "اظهار الكل"
 }

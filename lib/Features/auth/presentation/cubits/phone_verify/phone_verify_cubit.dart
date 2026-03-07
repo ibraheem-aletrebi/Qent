@@ -75,9 +75,7 @@ class PhoneVerifyCubit extends Cubit<PhoneVerifyState> {
         emit(PhoneVerifyCodeVerified(phoneVerifiedResponseModel: data));
       },
       onError: (error) {
-        emit(
-          PhoneVerifyError(errorModel:error),
-        );
+        emit(PhoneVerifyError(errorModel: error));
       },
     );
   }

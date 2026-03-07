@@ -3,7 +3,7 @@ import 'package:quent/core/models/location_model.dart';
 import 'package:quent/core/models/meta_model.dart';
 
 class LocationResponseModel {
-    final List<LocationModel> data;
+  final List<LocationModel> data;
   final LinkModel links;
   final MetaModel meta;
   LocationResponseModel({
@@ -21,6 +21,4 @@ class LocationResponseModel {
       meta: MetaModel.fromJson(json['meta']),
     );
   }
-
 }
-

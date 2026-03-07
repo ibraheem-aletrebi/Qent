@@ -12,11 +12,11 @@ class ErrorModel {
 
   const ErrorModel({
     required this.message,
-     this.action,
-     this.icon,
-     this.statusCode,
-     this.errorType,
-     this.canRetry,
+    this.action,
+    this.icon,
+    this.statusCode,
+    this.errorType,
+    this.canRetry,
   });
 
   factory ErrorModel.fromServerResponse(

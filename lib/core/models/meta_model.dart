@@ -37,13 +37,13 @@ class MetaModel {
   }
 
   Map<String, dynamic> toJson() => {
-        "current_page": currentPage,
-        "from": from,
-        "last_page": lastPage,
-        "per_page": perPage,
-        "to": to,
-        "total": total,
-        "path": path,
-        "links": links.map((x) => x.toJson()).toList(),
-      };
+    "current_page": currentPage,
+    "from": from,
+    "last_page": lastPage,
+    "per_page": perPage,
+    "to": to,
+    "total": total,
+    "path": path,
+    "links": links.map((x) => x.toJson()).toList(),
+  };
 }

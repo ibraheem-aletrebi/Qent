@@ -16,6 +16,8 @@ class CustomButton extends StatelessWidget {
   final IconData? icon;
   final double? borderRadius;
   final Color? borderColor;
+  final IconAlignment? iconAlignment;
+  final Color? shadowColor;
   const CustomButton({
     super.key,
     required this.text,
@@ -29,7 +31,7 @@ class CustomButton extends StatelessWidget {
     this.textColor,
     this.icon,
     this.borderRadius,
-    this.borderColor,
+    this.borderColor, this.iconAlignment, this.shadowColor,
   });
 
   @override
@@ -40,6 +42,7 @@ class CustomButton extends StatelessWidget {
       width: width ?? double.infinity,
       height: height ?? AppSizes.h50,
       child: ElevatedButton.icon(
+        
         onPressed: isButtonEnabled ? onPressed : null,
         style: ElevatedButton.styleFrom(
           disabledBackgroundColor:
@@ -51,8 +54,11 @@ class CustomButton extends StatelessWidget {
               width: 2,
             ),
             borderRadius: BorderRadius.circular(borderRadius ?? AppSizes.r8),
+            
           ),
+          shadowColor: shadowColor,
         ),
+        iconAlignment: iconAlignment ,
         icon: isLoading
             ? SizedBox(
                 height: AppSizes.w18,

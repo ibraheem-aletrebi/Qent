@@ -1,5 +1,3 @@
-
-
 class LocationModel {
   final int id;
   final String name;
@@ -23,11 +21,6 @@ class LocationModel {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'name': name,
-      'lat': lat,
-      'lng': lng,
-    };
+    return {'id': id, 'name': name, 'lat': lat, 'lng': lng};
   }
 }

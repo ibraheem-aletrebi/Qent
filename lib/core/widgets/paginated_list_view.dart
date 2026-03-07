@@ -4,7 +4,6 @@ import 'package:quent/core/resources/app_sizes.dart';
 import 'package:quent/core/resources/app_text_styles.dart';
 import 'package:quent/core/widgets/loading_widget.dart';
 
-
 typedef ItemBuilder<T> = Widget Function(T item);
 typedef SkeletonBuilder = Widget Function();
 typedef ErrorBuilder = Widget Function(String? message, VoidCallback? onRetry);

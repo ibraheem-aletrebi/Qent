@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quent/Features/home/data/models/brands_response_model.dart';
+import 'package:quent/Features/home/data/models/brands_response_model/brand_model.dart';
 import 'package:quent/core/extensions/color_extension.dart';
 import 'package:quent/core/resources/app_sizes.dart';
 import 'package:quent/core/widgets/custom_cached_network_image.dart';

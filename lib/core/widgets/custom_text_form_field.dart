@@ -145,7 +145,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             WidgetsBinding.instance.addPostFrameCallback((_) {
               if (mounted) setState(() => _error = err);
             });
-            return null; 
+            return null;
           },
           style: AppTextStyles.regular14.copyWith(
             color: widget.enabled ? c.textPrimary : c.textHint,
@@ -175,17 +175,19 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
               minWidth: 48,
               minHeight: 48,
             ),
-    
+
             contentPadding:
                 widget.contentPadding ??
                 EdgeInsets.symmetric(
                   horizontal: AppSizes.w16,
                   vertical: AppSizes.h14,
                 ),
-    
+
             filled: true,
-            fillColor: widget.enabled ? c.surface : c.surface.withValues(alpha:0.6),
-    
+            fillColor: widget.enabled
+                ? c.surface
+                : c.surface.withValues(alpha: 0.6),
+
             enabledBorder: _border(borderColor, c),
             focusedBorder: _border(borderColor, c),
             errorBorder: _border(c.error, c),
@@ -195,7 +197,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             errorStyle: const TextStyle(fontSize: 0, height: 0),
           ),
         ),
-    
+
         if (_error != null)
           Padding(
             padding: EdgeInsets.only(top: AppSizes.h6, left: AppSizes.w4),

@@ -18,10 +18,6 @@ class CountryModel {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'country': country,
-      'abbreviation': abbreviation,
-    };
+    return {'id': id, 'country': country, 'abbreviation': abbreviation};
   }
 }

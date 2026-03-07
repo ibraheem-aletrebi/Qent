@@ -6,7 +6,7 @@ import 'package:quent/Features/on_boarding/presentation/cubits/on_boarding_cubit
 class OnBoardingCubit extends Cubit<OnBoardingState> {
   OnBoardingCubit() : super(OnBoardingInitial());
 
-   List<OnBoardingModel>? pages ;
+  List<OnBoardingModel>? pages;
   final PageController controller = PageController();
   int currentPageIndex = 0;
 
@@ -19,7 +19,7 @@ class OnBoardingCubit extends Cubit<OnBoardingState> {
     if (pages == null || pages!.isEmpty) return 0.0;
     return (currentPageIndex + 1) / pages!.length;
   }
-  
+
   void goToNextPage() {
     controller.nextPage(
       duration: const Duration(milliseconds: 400),
@@ -29,7 +29,7 @@ class OnBoardingCubit extends Cubit<OnBoardingState> {
 
   void goToLastPage() {
     controller.animateToPage(
-      pages!.length - 1 ,
+      pages!.length - 1,
       duration: const Duration(milliseconds: 400),
       curve: Curves.easeOut,
     );

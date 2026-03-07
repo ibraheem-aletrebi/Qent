@@ -24,10 +24,7 @@ final class BrandLoadingMoreFailure extends BrandState {
   final ErrorModel error;
   final List<BrandModel> brandList;
 
-  const BrandLoadingMoreFailure({
-    required this.error,
-    required this.brandList,
-  });
+  const BrandLoadingMoreFailure({required this.error, required this.brandList});
 
   @override
   List<Object> get props => [error, brandList];
@@ -51,5 +48,3 @@ final class BrandFailure extends BrandState {
   @override
   List<Object> get props => [error];
 }
-
-final class BrandEmpty extends BrandState {}

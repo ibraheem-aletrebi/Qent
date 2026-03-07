@@ -45,7 +45,7 @@ class LoginCubit extends Cubit<LoginState> {
           emit(LoginSuccess(data: data));
         },
         onError: (error) {
-          emit(LoginError(errorModel:error));
+          emit(LoginError(errorModel: error));
         },
       );
     }

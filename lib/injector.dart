@@ -10,7 +10,9 @@ import 'package:quent/Features/home/data/data_source/home_local_data_source.dart
 import 'package:quent/Features/home/data/data_source/home_remote_data_source.dart';
 import 'package:quent/Features/home/data/repos/home_repo_imp.dart';
 import 'package:quent/Features/home/domain/repo/home_repo.dart';
+import 'package:quent/Features/home/domain/use_cases/fetch_best_cars_use_case.dart';
 import 'package:quent/Features/home/domain/use_cases/fetch_brands_use_case.dart';
+import 'package:quent/Features/home/domain/use_cases/fetch_nearby_cars_use_case.dart';
 import 'package:quent/core/services/local/local_storage_helper.dart';
 import 'package:quent/core/services/remote/api_service.dart';
 import 'package:quent/core/services/remote/dio_client.dart';
@@ -60,5 +62,10 @@ Future<void> _initHome() async {
     )
     ..registerLazySingleton<FetchBrandsUseCase>(
       () => FetchBrandsUseCase(homeRepo: sl()),
+    )
+    ..registerLazySingleton<FetchBestCarsUseCase>(
+      () => FetchBestCarsUseCase(homeRepo: sl()),
+    ) ..registerLazySingleton<FetchNearbyCarsUseCase>(
+      () => FetchNearbyCarsUseCase(homeRepo: sl()),
     );
 }

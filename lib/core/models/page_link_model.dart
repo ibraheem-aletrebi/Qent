@@ -1,14 +1,9 @@
-
 class PageLinkModel {
   final String? url;
   final String label;
   final bool active;
 
-  PageLinkModel({
-    this.url,
-    required this.label,
-    required this.active,
-  });
+  PageLinkModel({this.url, required this.label, required this.active});
 
   factory PageLinkModel.fromJson(Map<String, dynamic> json) {
     return PageLinkModel(
@@ -19,8 +14,8 @@ class PageLinkModel {
   }
 
   Map<String, dynamic> toJson() => {
-        "url": url,
-        "label": label,
-        "active": active,
-      };
+    "url": url,
+    "label": label,
+    "active": active,
+  };
 }

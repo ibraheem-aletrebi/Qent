@@ -117,7 +117,7 @@ class FormValidators {
     if (value == null || value.isEmpty) return emptyMessage;
 
     final pattern = RegExp(r'^\d{4}$');
-    if (!pattern.hasMatch(value)) return invalidMessage;    
+    if (!pattern.hasMatch(value)) return invalidMessage;
     return null;
   }
 }

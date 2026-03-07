@@ -838,6 +838,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Branding`
+  String get Branding {
+    return Intl.message('Branding', name: 'Branding', desc: '', args: []);
+  }
+
+  /// `See All`
+  String get seeAll {
+    return Intl.message('See All', name: 'seeAll', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

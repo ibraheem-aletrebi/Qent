@@ -11,7 +11,7 @@ class PhoneVerificationViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-          padding: EdgeInsets.all(AppSizes.w16),
+      padding: EdgeInsets.all(AppSizes.w16),
       child: ConstrainedBox(
         constraints: BoxConstraints(
           minHeight:

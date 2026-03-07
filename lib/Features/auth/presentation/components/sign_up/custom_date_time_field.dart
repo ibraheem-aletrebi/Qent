@@ -7,7 +7,7 @@ class CustomDatePickerField extends StatefulWidget {
   final DateTime? initialDate;
   final DateTime? firstDate;
   final DateTime? lastDate;
- final String? Function(String?)?  validator;
+  final String? Function(String?)? validator;
   final Function(DateTime)? onDateSelected;
 
   const CustomDatePickerField({

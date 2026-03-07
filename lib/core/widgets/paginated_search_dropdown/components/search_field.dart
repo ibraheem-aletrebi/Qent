@@ -24,10 +24,7 @@ class SearchField extends StatelessWidget {
           contentPadding: const EdgeInsets.all(16),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(
-              color: context.myColors.surface,
-              width: 2,
-            ),
+            borderSide: BorderSide(color: context.myColors.surface, width: 2),
           ),
           hintText: S.of(context).search,
           prefixIcon: const Icon(Icons.search),

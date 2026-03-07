@@ -4,4 +4,3 @@ class HiveKeys {
   static const String isShowOnboarding = 'is_show_onboarding';
   static const String rememberMe = 'remember_me';
 }
-

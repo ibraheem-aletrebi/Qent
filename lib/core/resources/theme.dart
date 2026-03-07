@@ -616,7 +616,6 @@ class AppTheme {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(AppSizes.r4),
       ),
-      
     ),
 
     snackBarTheme: SnackBarThemeData(

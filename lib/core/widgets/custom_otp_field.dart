@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 import 'package:quent/core/resources/app_sizes.dart';
 
-
 class CustomOTPField extends StatelessWidget {
   final int length;
   final TextEditingController controller;
@@ -48,7 +47,7 @@ class CustomOTPField extends StatelessWidget {
 
     final defaultPinTheme = PinTheme(
       width: width ?? AppSizes.w48,
-      height: height ??  AppSizes.w48,
+      height: height ?? AppSizes.w48,
       textStyle: theme.textTheme.titleLarge,
       decoration: BoxDecoration(
         color: backgroundColor ?? colorScheme.surface,

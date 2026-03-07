@@ -70,7 +70,7 @@ class ForgotPasswordFlowCubit extends Cubit<ForgotPasswordFlowState> {
         _goToNext();
       },
       onError: (error) {
-        emit(Failure(errorMode:error));
+        emit(Failure(errorMode: error));
       },
     );
   }
@@ -108,7 +108,7 @@ class ForgotPasswordFlowCubit extends Cubit<ForgotPasswordFlowState> {
         emit(ResendOtpSuccess(forgotPasswordResponseModel: data));
       },
       onError: (error) {
-        emit(Failure(errorMode:error));
+        emit(Failure(errorMode: error));
       },
     );
   }
@@ -136,7 +136,7 @@ class ForgotPasswordFlowCubit extends Cubit<ForgotPasswordFlowState> {
         emit(ResetPasswordSuccess());
       },
       onError: (error) {
-        emit(Failure(errorMode:error));
+        emit(Failure(errorMode: error));
       },
     );
   }

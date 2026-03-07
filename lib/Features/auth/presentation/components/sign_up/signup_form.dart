@@ -20,7 +20,7 @@ class SignupForm extends StatelessWidget {
       key: context.read<SignupCubit>().formKey,
       child: Column(
         children: [
-         SignupNameFields(),
+          SignupNameFields(),
           SizedBox(height: AppSizes.h16),
           CustomTextFormField(
             hint: S.of(context).email,

@@ -23,6 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "Ar": MessageLookupByLibrary.simpleMessage("عربي"),
+    "Branding": MessageLookupByLibrary.simpleMessage("الماركات"),
     "ConfirmPassword": MessageLookupByLibrary.simpleMessage("تأكيد الباسورد"),
     "En": MessageLookupByLibrary.simpleMessage("إنجليزي"),
     "FirstName": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
@@ -194,6 +195,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "retry": MessageLookupByLibrary.simpleMessage("حاول تاني"),
     "search": MessageLookupByLibrary.simpleMessage("دور..."),
+    "seeAll": MessageLookupByLibrary.simpleMessage("اظهار الكل"),
     "selectCar": MessageLookupByLibrary.simpleMessage("اختار العربية"),
     "selectCarType": MessageLookupByLibrary.simpleMessage("اختار نوع العربية"),
     "selectCity": MessageLookupByLibrary.simpleMessage("اختار المدينة"),

@@ -1,36 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:quent/Features/car_details/presentation/view/car_details_view.dart';
+import 'package:quent/Features/home/data/models/car_response_model/car_model.dart';
 import 'package:quent/core/extensions/color_extension.dart';
+import 'package:quent/core/extensions/navigation_extension.dart';
+import 'package:quent/core/utils/format_number.dart';
+import 'package:quent/core/widgets/custom_cached_network_image.dart';
 
 class BestCarCard extends StatelessWidget {
-  final String imageUrl;
-  final String name;
-  final double rating;
-  final String location;
-  final int seats;
-  final String pricePerDay;
-  final VoidCallback? onTap;
-  final VoidCallback? onFavoriteTap;
-  final bool isFavorite;
+  final CarModel car;
 
-  const BestCarCard({
-    super.key,
-    required this.imageUrl,
-    required this.name,
-    required this.rating,
-    required this.location,
-    required this.seats,
-    required this.pricePerDay,
-    this.onTap,
-    this.onFavoriteTap,
-    this.isFavorite = false,
-  });
+  const BestCarCard({super.key, required this.car});
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colors = context.myColors;
     return GestureDetector(
-      onTap: onTap,
+      onTap: () {
+        context.push(CarDetailsView(car: car));
+      },
       child: Container(
         decoration: BoxDecoration(
           color: colors.surface,
@@ -48,7 +36,11 @@ class BestCarCard extends StatelessWidget {
                   ),
                   child: AspectRatio(
                     aspectRatio: 16 / 9,
-                    child: Image.network(imageUrl, fit: BoxFit.cover),
+                    child: CachedImage(
+                      url:
+                          'https://images.unsplash.com/photo-1542362567-b07e54358753?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGNhcnxlbnwwfHwwfHx8MA%3D%3D',
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
 
@@ -59,12 +51,10 @@ class BestCarCard extends StatelessWidget {
                     style: IconButton.styleFrom(
                       backgroundColor: colors.surface,
                     ),
-                    onPressed: onFavoriteTap,
+                    onPressed: () {},
                     icon: Icon(
-                      isFavorite ? Icons.favorite : Icons.favorite_border,
-                      color: isFavorite
-                          ? colors.primary
-                          : colors.primaryVariant,
+                      false ? Icons.favorite : Icons.favorite_border,
+                      color: false ? colors.primary : colors.primaryVariant,
                     ),
                   ),
                 ),
@@ -77,7 +67,7 @@ class BestCarCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    name,
+                    car.name ?? 'fuck',
                     style: theme.textTheme.titleMedium,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
@@ -88,7 +78,7 @@ class BestCarCard extends StatelessWidget {
                       const Icon(Icons.star, color: Colors.amber),
                       const SizedBox(width: 4),
                       Text(
-                        rating.toString(),
+                        car.averageRate.toString(),
                         style: theme.textTheme.titleSmall,
                       ),
                     ],
@@ -100,7 +90,7 @@ class BestCarCard extends StatelessWidget {
                       const SizedBox(width: 4),
                       Expanded(
                         child: Text(
-                          location,
+                          car.location?.name ?? 'fuck',
                           style: theme.textTheme.bodyMedium,
                           overflow: TextOverflow.ellipsis,
                           maxLines: 1,
@@ -117,12 +107,17 @@ class BestCarCard extends StatelessWidget {
                           Icon(Icons.event_seat),
                           const SizedBox(width: 4),
                           Text(
-                            '$seats Seats',
+                            '${car.seatingCapacity} Seats',
                             style: theme.textTheme.bodyMedium,
                           ),
                         ],
                       ),
-                      Text(pricePerDay, style: theme.textTheme.titleMedium),
+                      Text(
+                        car.price == null
+                            ? 'For Free'
+                            : "${formatNumber(num.parse(car.price))}/Day",
+                        style: theme.textTheme.titleMedium,
+                      ),
                     ],
                   ),
                 ],

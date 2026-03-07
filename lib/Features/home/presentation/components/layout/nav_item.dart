@@ -36,7 +36,7 @@ class NavItem extends StatelessWidget {
           duration: const Duration(milliseconds: 300),
           child: Icon(
             icon,
-            size: 24,
+            size: AppSizes.w24,
             color: isSelected
                 ? Colors.white
                 : Colors.white.withValues(alpha: .5),

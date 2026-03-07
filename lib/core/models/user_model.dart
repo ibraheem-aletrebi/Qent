@@ -1,4 +1,3 @@
-
 import 'package:quent/core/models/country_model.dart';
 import 'package:quent/core/models/location_model.dart';
 

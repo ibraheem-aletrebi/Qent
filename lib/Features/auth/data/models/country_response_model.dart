@@ -22,5 +22,4 @@ class CountryResponseModel {
       meta: MetaModel.fromJson(json['meta']),
     );
   }
-
 }

@@ -19,12 +19,22 @@ class SignupNameFields extends StatelessWidget {
           child: CustomTextFormField(
             hint: S.of(context).FirstName,
             controller: cubit.firstNameController,
-            validator: (value) => FormValidators.requiredField(value, S.of(context).firstNameRequired),
+            validator: (value) => FormValidators.requiredField(
+              value,
+              S.of(context).firstNameRequired,
+            ),
           ),
         ),
-        Expanded(child: CustomTextFormField(hint: S.of(context).LastName,
+        Expanded(
+          child: CustomTextFormField(
+            hint: S.of(context).LastName,
             controller: cubit.lastNameController,
-            validator: (value) => FormValidators.requiredField(value, S.of(context).lastNameRequired))),
+            validator: (value) => FormValidators.requiredField(
+              value,
+              S.of(context).lastNameRequired,
+            ),
+          ),
+        ),
       ],
     );
   }

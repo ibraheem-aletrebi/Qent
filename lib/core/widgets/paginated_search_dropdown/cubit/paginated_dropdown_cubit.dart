@@ -22,46 +22,45 @@ class PaginatedDropdownCubit<T> extends Cubit<PaginatedDropdownState<T>> {
 
   Future<void> init() => loadData(reset: true);
 
-Future<void> loadData({bool reset = false}) async {
-  if (state.isLoading) return;
+  Future<void> loadData({bool reset = false}) async {
+    if (state.isLoading) return;
 
-  if (reset) _currentPage = 1;
+    if (reset) _currentPage = 1;
 
-  emit(
-    state.copyWith(
-      isLoading: true,
-      error: reset ? null : state.error,
-      selectedItem: state.selectedItem,
-    ),
-  );
+    emit(
+      state.copyWith(
+        isLoading: true,
+        error: reset ? null : state.error,
+        selectedItem: state.selectedItem,
+      ),
+    );
 
-  final response = await fetchData(_currentPage, state.searchQuery);
+    final response = await fetchData(_currentPage, state.searchQuery);
 
-  response.when(
-    onSuccess: (result) {
-      final items =
-          reset ? result.data : [...state.items, ...result.data];
+    response.when(
+      onSuccess: (result) {
+        final items = reset ? result.data : [...state.items, ...result.data];
 
-      emit(
-        state.copyWith(
-          items: items,
-          hasMore: result.hasMore,
-          isLoading: false,
-          selectedItem: state.selectedItem,
-        ),
-      );
-    },
-    onError: (error) {
-      emit(
-        state.copyWith(
-          isLoading: false,
-          error: error,
-          selectedItem: state.selectedItem,
-        ),
-      );
-    },
-  );
-}
+        emit(
+          state.copyWith(
+            items: items,
+            hasMore: result.hasMore,
+            isLoading: false,
+            selectedItem: state.selectedItem,
+          ),
+        );
+      },
+      onError: (error) {
+        emit(
+          state.copyWith(
+            isLoading: false,
+            error: error,
+            selectedItem: state.selectedItem,
+          ),
+        );
+      },
+    );
+  }
 
   Future<void> loadMore() async {
     if (state.hasMore && !state.isLoading) {
