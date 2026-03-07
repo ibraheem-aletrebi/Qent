@@ -1,11 +1,18 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:quent/Features/home/data/models/car_response_model/image_model.dart';
+import 'package:quent/core/extensions/color_extension.dart';
+import 'package:quent/core/resources/app_sizes.dart';
+import 'package:quent/core/widgets/custom_glass_button.dart';
 
 class FullScreenGallery extends StatefulWidget {
-  final List<String> images;
+  final List<ImageModel> images;
   final int initialIndex;
-  const FullScreenGallery({super.key, required this.images, required this.initialIndex});
+  const FullScreenGallery({
+    super.key,
+    required this.images,
+    required this.initialIndex,
+  });
 
   @override
   State<FullScreenGallery> createState() => _FullScreenGalleryState();
@@ -32,6 +39,7 @@ class _FullScreenGalleryState extends State<FullScreenGallery> {
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.myColors;
     return Scaffold(
       backgroundColor: Colors.black,
       body: Stack(
@@ -45,13 +53,10 @@ class _FullScreenGalleryState extends State<FullScreenGallery> {
               maxScale: 5.0,
               child: Center(
                 child: Image.network(
-                  widget.images[i],
+                  widget.images[i].image,
                   fit: BoxFit.contain,
-                  errorBuilder: (_, __, ___) => const Icon(
-                    Icons.broken_image_rounded,
-                    color: Colors.white54,
-                    size: 60,
-                  ),
+                  errorBuilder: (_, _, _) =>
+                      Icon(Icons.broken_image_rounded, size: AppSizes.w60),
                 ),
               ),
             ),
@@ -62,22 +67,9 @@ class _FullScreenGalleryState extends State<FullScreenGallery> {
             left: 16,
             child: GestureDetector(
               onTap: () => Navigator.pop(context),
-              child: Container(
-                width: 40,
-                height: 40,
-                decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.5),
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: Colors.white.withOpacity(0.2),
-                    width: 1,
-                  ),
-                ),
-                child: const Icon(
-                  Icons.close_rounded,
-                  color: Colors.white,
-                  size: 20,
-                ),
+              child: CustomGlassButton(
+                child: Icon(Icons.close_rounded),
+                onTap: () => Navigator.pop(context),
               ),
             ),
           ),
@@ -136,4 +128,3 @@ class _FullScreenGalleryState extends State<FullScreenGallery> {
     );
   }
 }
-

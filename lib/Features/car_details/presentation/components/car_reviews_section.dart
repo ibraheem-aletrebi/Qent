@@ -18,7 +18,7 @@ class CarReviewsSection extends StatelessWidget {
           title: 'Reviews (${car.reviewsCount ?? 0})',
           onActionTap: () {},
         ),
-        const SizedBox(height: 12),
+        SizedBox(height: AppSizes.h12),
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.13,
           child: ListView.builder(

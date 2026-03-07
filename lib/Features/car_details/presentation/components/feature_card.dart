@@ -14,10 +14,10 @@ class FeatureCard extends StatelessWidget {
     final colors = context.myColors;
     final textTheme = Theme.of(context).textTheme;
     return Container(
-      padding: const EdgeInsets.all(12),
+      padding: EdgeInsets.all(AppSizes.w12),
       decoration: BoxDecoration(
         color: colors.surface,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(AppSizes.r12),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,9 +30,9 @@ class FeatureCard extends StatelessWidget {
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: 2,
             children: [
               Text(feature.name, style: textTheme.titleSmall),
-              const SizedBox(height: 2),
               Text(
                 feature.value,
                 style: textTheme.bodyMedium?.copyWith(

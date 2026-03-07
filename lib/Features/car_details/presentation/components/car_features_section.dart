@@ -22,10 +22,10 @@ class CarFeaturesSection extends StatelessWidget {
             padding: EdgeInsets.zero,
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
-              mainAxisSpacing: 12,
-              crossAxisSpacing: 12,
+              mainAxisSpacing: AppSizes.w12,
+              crossAxisSpacing: AppSizes.w12,
               childAspectRatio: 1.15,
             ),
             itemCount: features.length,
